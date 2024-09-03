@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 function bento_work() {
   // WORK MARQUEE
   gsap.to('.is--left', {
-    xPercent: -25,
+    xPercent: -50,
     repeat: -1,
     duration: 8,
     ease: 'linear',
