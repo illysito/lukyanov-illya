@@ -1,9 +1,8 @@
 import { gsap } from 'gsap'
 import SplitType from 'split-type'
 
-function bento_work_variable(counter) {
+function bento_work_variable(counter, workHeader) {
   // VARIABLES
-  const workHeader = document.querySelectorAll('.bento__work-header')
   let workHeaderArray = []
   let amplitude = 100
   let speed = 0.03
