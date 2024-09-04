@@ -49,7 +49,11 @@ function updateFPS() {
 requestAnimationFrame(updateFPS)
 
 //------------ FUNCTIONS ------------//
-mouse(circle)
+if (circle) {
+  mouse(circle)
+} else {
+  console.log('theres no circle')
+}
 bento(categories)
 // bento_work()
 // bento_blur()
