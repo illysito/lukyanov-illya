@@ -8,6 +8,7 @@ import bento_portadas from './features/bento_portadas'
 import bento_posters from './features/bento_posters'
 // import bento_work from './features/bento_work'
 import bento_work_variable from './features/bento_work_variable'
+import ball from './features/experiments/gradient_ball'
 import mouse from './features/mouse'
 
 import './styles/style.css'
@@ -48,21 +49,33 @@ function updateFPS() {
 // Start the FPS counter
 requestAnimationFrame(updateFPS)
 
-//------------ FUNCTIONS ------------//
-if (circle) {
-  mouse(circle)
-} else {
-  console.log('theres no circle')
-}
-bento(categories)
-// bento_work()
-// bento_blur()
-function bentoWorkVariable() {
-  counter++
-  bento_work_variable(counter, workHeader)
+// ------------ HOME FUNCTIONS ------------ //
+function runHomeFunctions() {
+  if (circle) {
+    mouse(circle)
+  } else {
+    console.log('theres no circle')
+  }
+  bento(categories)
+  // bento_work()
+  // bento_blur()
+  function bentoWorkVariable() {
+    counter++
+    bento_work_variable(counter, workHeader)
+    requestAnimationFrame(bentoWorkVariable)
+  }
   requestAnimationFrame(bentoWorkVariable)
+  bento_logos()
+  bento_posters(posters_bento, posters_cont, posters)
+  bento_portadas(portadas_bento, portadas_cont, portadas)
 }
-requestAnimationFrame(bentoWorkVariable)
-bento_logos()
-bento_posters(posters_bento, posters_cont, posters)
-bento_portadas(portadas_bento, portadas_cont, portadas)
+// ---------- EXPERIMENTS ---------- //
+function runExpFunctions() {
+  ball()
+}
+// ---------- MAIN ----------- //
+if (document.body.classList.contains('body__home')) {
+  runHomeFunctions()
+} else if (document.body.classList.contains('body__experiments')) {
+  runExpFunctions()
+}
