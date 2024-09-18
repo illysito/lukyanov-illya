@@ -75,7 +75,9 @@ function runHomeFunctions() {
 // ---------- MAIN ----------- //
 
 // if (document.body.classList.contains('body__home')) {
-runHomeFunctions()
+// runHomeFunctions()
 // } else if (document.body.classList.contains('body__experiments')) {
 //   runExpFunctions()
 // }
+
+runHomeFunctions()
