@@ -4,7 +4,7 @@ function nature() {
   const sun = document.querySelector('.side__sun')
   const moon = document.querySelector('.side__moon')
   const tl = gsap.timeline()
-  const duration = 4
+  const duration = 6
 
   tl.to(sun, {
     y: 16,
