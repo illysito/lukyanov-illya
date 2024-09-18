@@ -10,6 +10,7 @@ import bento_work_variable from './features/bento_work_variable'
 import mousetrail from './features/experiments/mousetrail'
 // import line from './features/experiments/gradient_line'
 import mouse from './features/mouse'
+import nature from './features/nature'
 
 import './styles/style.css'
 
@@ -63,6 +64,7 @@ function runHomeFunctions() {
   requestAnimationFrame(bentoWorkVariable)
   // Blurred blob
   mousetrail(trail_wrapper, trail_array)
+  nature()
 }
 
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //
