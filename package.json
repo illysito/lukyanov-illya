@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "gsap": "^3.9.1",
-    "split-type": "^0.3.4"
+    "split-type": "^0.3.4",
+    "three": "^0.168.0"
   }
 }

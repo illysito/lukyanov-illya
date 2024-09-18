@@ -1,29 +1,26 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import bento from './features/bento'
+// IMPORTS
+
 // import bento_blur from './features/bento_blur'
-import bento_logos from './features/bento_logos'
-import bento_portadas from './features/bento_portadas'
-import bento_posters from './features/bento_posters'
 // import bento_work from './features/bento_work'
 import bento_work_variable from './features/bento_work_variable'
-import ball from './features/experiments/gradient_ball'
+// import ball from './features/experiments/gradient_ball'
+import mousetrail from './features/experiments/mousetrail'
+// import line from './features/experiments/gradient_line'
 import mouse from './features/mouse'
 
 import './styles/style.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const circle = document.querySelector('.backdrop-circle')
-const categories = document.querySelectorAll('.is--category')
+// const circle = document.querySelector('.backdrop-circle')
+const rect = document.querySelector('.backdrop-rect')
 const workHeader = document.querySelectorAll('.bento__work-header')
-const portadas_bento = document.querySelector('.bento__portadas')
-const portadas_cont = document.querySelector('.bento__portadas-cont')
-const portadas = document.querySelectorAll('.bento__portada-img')
-const posters_bento = document.querySelector('.bento__posters')
-const posters_cont = document.querySelector('.bento__posters-cont')
-const posters = document.querySelectorAll('.bento__poster-img')
+// const blob = document.querySelector('.gradball__home')
+const trail_wrapper = document.querySelector('.trail-wrapper')
+const trail_array = document.querySelectorAll('.trail')
 
 let counter = 0
 let frameCount = 0
@@ -45,37 +42,40 @@ function updateFPS() {
   }
   requestAnimationFrame(updateFPS)
 }
-
 // Start the FPS counter
 requestAnimationFrame(updateFPS)
 
 // ------------ HOME FUNCTIONS ------------ //
+
 function runHomeFunctions() {
-  if (circle) {
-    mouse(circle)
+  // Funcion que hace que la bolita siga al MOUSE
+  if (rect) {
+    mouse(rect)
   } else {
     console.log('theres no circle')
   }
-  bento(categories)
-  // bento_work()
-  // bento_blur()
+  // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
   function bentoWorkVariable() {
     counter++
     bento_work_variable(counter, workHeader)
     requestAnimationFrame(bentoWorkVariable)
   }
   requestAnimationFrame(bentoWorkVariable)
-  bento_logos()
-  bento_posters(posters_bento, posters_cont, posters)
-  bento_portadas(portadas_bento, portadas_cont, portadas)
+  // Blurred blob
+  mousetrail(trail_wrapper, trail_array)
 }
-// ---------- EXPERIMENTS ---------- //
-function runExpFunctions() {
-  ball()
-}
+
+// ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //
+
+// function runExpFunctions() {
+//   ball()
+//   line()
+// }
+
 // ---------- MAIN ----------- //
-if (document.body.classList.contains('body__home')) {
-  runHomeFunctions()
-} else if (document.body.classList.contains('body__experiments')) {
-  runExpFunctions()
-}
+
+// if (document.body.classList.contains('body__home')) {
+runHomeFunctions()
+// } else if (document.body.classList.contains('body__experiments')) {
+//   runExpFunctions()
+// }

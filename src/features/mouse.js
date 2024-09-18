@@ -1,16 +1,20 @@
 import { gsap } from 'gsap'
 
 function mouse(circle) {
+  const work_bento = document.querySelector('.bento__img')
+
   gsap.set(circle, {
     pointerEvents: 'none',
+    // visibility: hidden,
   })
   // const circle = document.querySelector('.backdrop-circle')
-  // circle.style.visibility = 'hidden'
+  circle.style.visibility = 'hidden'
   // const body = document.body
   let mouseX = window.innerWidth / 2
   let mouseY = window.innerHeight / 2
   let current_left = mouseX
   let current_top = mouseY
+  let circleRadius = 0
   // let circleRadius = circle.offsetWidth / 8
 
   function lerp(start, end, t) {
@@ -48,29 +52,30 @@ function mouse(circle) {
     updateCircle()
   }
 
-  // function hideCircleIfNeeded() {
-  //   let bentoRect = work_bento.getBoundingClientRect()
-  //   let offset = circleRadius
-  //   if (
-  //     mouseX < bentoRect.left + offset ||
-  //     mouseX > bentoRect.right - offset ||
-  //     mouseY < bentoRect.top + offset ||
-  //     mouseY > bentoRect.bottom - offset
-  //   ) {
-  //     circle.style.visibility = 'hidden'
-  //   } else {
-  //     circle.style.visibility = 'visible'
-  //   }
-  // }
+  // SOLO SI ESTA DENTRO DEL CUADRADO DE LAS IMAGENES DE PROYECTO
+  function hideCircleIfNeeded() {
+    let bentoRect = work_bento.getBoundingClientRect()
+    let offset = circleRadius
+    if (
+      mouseX < bentoRect.left + offset ||
+      mouseX > bentoRect.right - offset ||
+      mouseY < bentoRect.top + offset ||
+      mouseY > bentoRect.bottom - offset
+    ) {
+      circle.style.visibility = 'hidden'
+    } else {
+      circle.style.visibility = 'visible'
+    }
+  }
 
-  // work_bento.addEventListener('mouseenter', () => {
-  //   circle.style.visibility = 'visible'
-  // })
+  work_bento.addEventListener('mouseenter', () => {
+    circle.style.visibility = 'visible'
+  })
 
   window.addEventListener('mousemove', mousemove)
-  // body.addEventListener('mousemove', hideCircleIfNeeded)
+  window.addEventListener('mousemove', hideCircleIfNeeded)
   window.addEventListener('scroll', scroll)
-  // window.addEventListener('scroll', hideCircleIfNeeded)
+  window.addEventListener('scroll', hideCircleIfNeeded)
 }
 
 export default mouse

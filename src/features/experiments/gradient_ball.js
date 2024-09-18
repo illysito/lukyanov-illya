@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
-function ball() {
-  const grad_ball = document.querySelector('.gradball')
+function ball(grad_ball) {
+  // const grad_ball = document.querySelector('.gradball')
   const ball_rect = grad_ball.getBoundingClientRect()
   const tl = gsap.timeline()
   let mouseX = 0
