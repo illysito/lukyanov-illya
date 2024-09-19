@@ -50,7 +50,7 @@ function projects() {
   function handleTitleHoverOut(event) {
     let actualTitle = event.currentTarget
     gsap.to(actualTitle, {
-      fontWeight: 400,
+      fontWeight: 300,
       x: 0,
       color: '#fffbf6',
       duration: 0.3,
