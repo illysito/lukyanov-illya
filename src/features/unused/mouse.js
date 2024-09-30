@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 function mouse(circle) {
-  const work_bento = document.querySelector('.bento__img')
+  const hero_section = document.querySelector('.hero-section')
 
   gsap.set(circle, {
     pointerEvents: 'none',
@@ -14,7 +14,7 @@ function mouse(circle) {
   let mouseY = window.innerHeight / 2
   let current_left = mouseX
   let current_top = mouseY
-  let circleRadius = 0
+  // let circleRadius = 0
   // let circleRadius = circle.offsetWidth / 8
 
   function lerp(start, end, t) {
@@ -38,6 +38,7 @@ function mouse(circle) {
         left: current_left,
         top: current_top,
       })
+      console.log(current_left)
     }
     requestAnimationFrame(updateCircle)
   }
@@ -54,21 +55,22 @@ function mouse(circle) {
 
   // SOLO SI ESTA DENTRO DEL CUADRADO DE LAS IMAGENES DE PROYECTO
   function hideCircleIfNeeded() {
-    let bentoRect = work_bento.getBoundingClientRect()
-    let offset = circleRadius
-    if (
-      mouseX < bentoRect.left + offset ||
-      mouseX > bentoRect.right - offset ||
-      mouseY < bentoRect.top + offset ||
-      mouseY > bentoRect.bottom - offset
-    ) {
-      circle.style.visibility = 'hidden'
-    } else {
-      circle.style.visibility = 'visible'
-    }
+    // let bentoRect = hero_section.getBoundingClientRect()
+    // let offset = circleRadius
+    // if (
+    //   mouseX < bentoRect.left + offset ||
+    //   mouseX > bentoRect.right - offset ||
+    //   mouseY < bentoRect.top + offset ||
+    //   mouseY > bentoRect.bottom - offset
+    // ) {
+    //   circle.style.visibility = 'hidden'
+    // } else {
+    //   circle.style.visibility = 'visible'
+    // }
+    console.log('hey')
   }
 
-  work_bento.addEventListener('mouseenter', () => {
+  hero_section.addEventListener('mouseenter', () => {
     circle.style.visibility = 'visible'
   })
 

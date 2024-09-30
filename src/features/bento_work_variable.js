@@ -8,13 +8,13 @@ function bento_work_variable(counter, workHeader) {
   let speed = 0.03
   let offset = 0.65
   let min_weight = 300
-  let max_wight = 500
+  let max_weight = 500
   let w_weightVariation = amplitude * Math.sin(counter * speed)
   let w_weight = gsap.utils.mapRange(
     -amplitude,
     amplitude,
     min_weight,
-    max_wight,
+    max_weight,
     w_weightVariation
   )
   let o_weightVariation = amplitude * Math.sin(offset + counter * speed)
@@ -22,7 +22,7 @@ function bento_work_variable(counter, workHeader) {
     -amplitude,
     amplitude,
     min_weight,
-    max_wight,
+    max_weight,
     o_weightVariation
   )
   let r_weightVariation = amplitude * Math.sin(2 * offset + counter * speed)
@@ -30,7 +30,7 @@ function bento_work_variable(counter, workHeader) {
     -amplitude,
     amplitude,
     min_weight,
-    max_wight,
+    max_weight,
     r_weightVariation
   )
   let k_weightVariation = amplitude * Math.sin(3 * offset + counter * speed)
@@ -38,7 +38,7 @@ function bento_work_variable(counter, workHeader) {
     -amplitude,
     amplitude,
     min_weight,
-    max_wight,
+    max_weight,
     k_weightVariation
   )
 

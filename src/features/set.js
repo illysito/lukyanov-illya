@@ -2,20 +2,20 @@ import { gsap } from 'gsap'
 
 function set() {
   const descriptions = document.querySelectorAll('.project__explained')
-  const images = document.querySelectorAll('.project__img')
+  // const titles = document.querySelectorAll('.project__title-big')
 
-  images.forEach((img) => {
-    gsap.set(img, {
-      opacity: 0,
-      visibility: 'none',
-    })
-  })
   descriptions.forEach((desc) => {
     gsap.set(desc, {
       opacity: 0,
       visibility: 'none',
     })
   })
+  // titles.forEach((title) => {
+  //   gsap.set(title, {
+  //     opacity: 0,
+  //     visibility: 'none',
+  //   })
+  // })
 }
 
 export default set
