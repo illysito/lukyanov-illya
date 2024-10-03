@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
 import bento_work_variable from './features/bento_work_variable'
-import hero from './features/hero'
 import main_scroll from './features/main_scroll'
 // import ball from './features/experiments/gradient_ball'
 import mousetrail from './features/mousetrail'
@@ -18,6 +17,7 @@ import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 import mouse from './features/unused/mouse'
+import hero from './features/world/world_main'
 
 import './styles/style.css'
 
@@ -31,6 +31,7 @@ const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 
 let counter = 0
+console.log('counter: ')
 // let frameCount = 0
 // let lastTime = performance.now()
 
