@@ -37,7 +37,7 @@ async function createText(text, x, y, z, index) {
   const textGeometry = new TextGeometry(text, {
     font: font,
     size: 8,
-    depth: 2, // Extrusion depth
+    depth: 1.2, // Extrusion depth
     curveSegments: 30,
     bevelEnabled: true,
     bevelThickness: 0.2, // How deep into the text the bevel goes
@@ -108,7 +108,7 @@ async function createText(text, x, y, z, index) {
   let velocity_y = 1
   let rotation_y = 0
   let rotation_x = 0
-  let amplitude = 0.3
+  let amplitude = 0.2
   let phase = 2 * index
 
   group.tick = (delta) => {

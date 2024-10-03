@@ -62,8 +62,8 @@ class World {
     // Create the text and add it to the scene
     this.i = await createText('I', -10, 0, -2, 0)
     this.l1 = await createText('L', -4, 0, -2, 1)
-    this.l2 = await createText('L', 2, 0, -4, 2)
-    this.y = await createText('Y', 8, 0, 0, 3)
+    this.l2 = await createText('L', 2, 0, -1, 2)
+    this.y = await createText('Y', 8, 0, -1, 3)
     scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
     loop.updatables.push(this.i, this.l1, this.l2, this.y)
   }
