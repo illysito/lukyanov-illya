@@ -2,9 +2,9 @@
 import { PointLight } from 'three'
 // import { DirectionalLight} from 'three'
 
-function createLight(x, y, z, i) {
+function createLight(x, y, z, i, color) {
   // const light = new DirectionalLight('#fffbf6', 8)
-  const light = new PointLight('white', i, 10)
+  const light = new PointLight(color, i, 10)
   light.position.set(x, y, z)
   light.castShadow = false
   // const helper = new PointLightHelper(light, 1, 0xff0000)

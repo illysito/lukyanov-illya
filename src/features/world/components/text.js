@@ -36,7 +36,7 @@ async function createText(text, x, y, z, index) {
   // create a geometry
   const textGeometry = new TextGeometry(text, {
     font: font,
-    size: 8,
+    size: window.innerWidth / 180,
     depth: 1.2, // Extrusion depth
     curveSegments: 30,
     bevelEnabled: true,
@@ -50,6 +50,7 @@ async function createText(text, x, y, z, index) {
   const blue = 0x2323ff
   const yellow = 0xff8500
   const blackie = 0x0e0e0e
+  // const white = 0xfffbf6
   let material = []
 
   // create a default (white) Basic material
@@ -103,7 +104,7 @@ async function createText(text, x, y, z, index) {
   group.position.set(x, y, z)
 
   // update the text
-  let radiansPerSecond = MathUtils.degToRad(40)
+  let radiansPerSecond = MathUtils.degToRad(50)
   let velocity_x = 1
   let velocity_y = 1
   let rotation_y = 0
@@ -131,6 +132,16 @@ async function createText(text, x, y, z, index) {
     // console.log('rotationX: ' + group.rotation.x)
     // console.log('rotationY: ' + group.rotation.y)
     // group.rotation.z = rotation_y
+    // function updateSize() {
+    //   console.log('youre rsizing me!')
+    //   if (type) {
+    //     textGeometry.font = window.innerWidth / 180
+    //   }
+    // }
+
+    // window.addEventListener('resize', () => {
+    //   updateSize()
+    // })
   }
   // onProgress callback
   return group

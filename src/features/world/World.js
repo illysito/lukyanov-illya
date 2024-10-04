@@ -28,11 +28,12 @@ class World {
 
     this.cube1 = createCube(2, 2, 2, 0, 0, 0)
 
-    const light1 = createLight(-12, 5, 2, 100)
-    const light2 = createLight(12, -5, 2, 100)
-    const light3 = createLight(0, 0, 3, 1)
-    const light_up = createLight(0, 8, 0, 10)
-    const light_down = createLight(0, -8, 0, 10)
+    const light1 = createLight(-12, 5, 2, 100, 'white')
+    const light2 = createLight(12, -5, 2, 100, 'white')
+    const light3 = createLight(0, 0, 3, 0, 'white')
+    const light_up = createLight(0, 8, 0, 10, 'white')
+    const light_down = createLight(0, -8, 0, 10, 'white')
+    this.mouse_light = createLight(0, 0, 3.6, 50, 'white')
     const directional_light = createDirLight(0, 0, -40)
     const ambient_light = createAmbLight(0xff0000, 100)
 
@@ -48,7 +49,8 @@ class World {
       light2,
       light3,
       light_up,
-      light_down
+      light_down,
+      this.mouse_light
       // directional_light
     )
 
@@ -60,10 +62,10 @@ class World {
   //
   async initText() {
     // Create the text and add it to the scene
-    this.i = await createText('I', -10, 0, -2, 0)
-    this.l1 = await createText('L', -4, 0, -2, 1)
-    this.l2 = await createText('L', 2, 0, -1, 2)
-    this.y = await createText('Y', 8, 0, -1, 3)
+    this.i = await createText('I', -window.innerWidth / 140, -1, -2, 0)
+    this.l1 = await createText('L', -window.innerWidth / 360, 1, -2, 1)
+    this.l2 = await createText('L', window.innerWidth / 720, -1, -1, 2)
+    this.y = await createText('Y', window.innerWidth / 180, 0.5, -1, 3)
     scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
     loop.updatables.push(this.i, this.l1, this.l2, this.y)
   }
@@ -84,25 +86,46 @@ class World {
     loop.stop()
   }
 
-  rotateCube(mouseX, mouseY) {
-    console.log('mouseX & mouseY: ' + mouseX + ' ' + mouseY)
-    let rotationDimmer = 0.0001
-    let mappedX = gsap.utils.mapRange(
-      0.02 * window.innerWidth,
-      0.98 * window.innerWidth,
+  rotateText(mouseX, mouseY) {
+    let rotationDimmerX = 0.0008
+    let rotationDimmerY = 0.0005
+    this.i.rotation.x += mouseY * rotationDimmerY
+    this.i.rotation.y += mouseX * rotationDimmerX
+    this.l1.rotation.x += mouseY * rotationDimmerY
+    this.l1.rotation.y += mouseX * rotationDimmerX
+    this.l2.rotation.x += mouseY * rotationDimmerY
+    this.l2.rotation.y += mouseX * rotationDimmerX
+    this.y.rotation.x += mouseY * rotationDimmerY
+    this.y.rotation.y += mouseX * rotationDimmerX
+  }
+
+  scrollText(scrollY) {
+    let scrollDimmer = 0.006
+    this.i.rotation.x += scrollY * scrollDimmer
+    this.l1.rotation.x += scrollY * scrollDimmer
+    this.l2.rotation.x += scrollY * scrollDimmer
+    this.y.rotation.x += scrollY * scrollDimmer
+  }
+
+  updateMouseLight(mouseX, mouseY) {
+    let lightX = gsap.utils.mapRange(
+      -window.innerWidth / 2,
+      window.innerWidth / 2,
       -20,
       20,
       mouseX
     )
-    let mappedY = gsap.utils.mapRange(0, window.innerHeight, -6, 6, mouseY)
-    this.i.rotation.x += mappedY * rotationDimmer
-    this.i.rotation.y += mappedX * rotationDimmer
-    this.l1.rotation.x += mappedY * rotationDimmer
-    this.l1.rotation.y -= mappedX * rotationDimmer
-    this.l2.rotation.x += mappedY * rotationDimmer
-    this.l2.rotation.y -= mappedX * rotationDimmer
-    this.y.rotation.x += mappedY * rotationDimmer
-    this.y.rotation.y -= mappedX * rotationDimmer
+    let lightY = gsap.utils.mapRange(
+      -window.innerHeight / 2,
+      window.innerHeight / 2,
+      -16,
+      16,
+      mouseY
+    )
+    this.mouse_light.position.x = lightX
+    this.mouse_light.position.y = -lightY
+    console.log('mouseX & mouseY: ' + mouseX + ' ' + mouseY)
+    console.log('lightX & lightY: ' + lightX + ' ' + lightY)
   }
 }
 
