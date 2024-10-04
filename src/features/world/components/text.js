@@ -8,6 +8,8 @@ import {
   Box3,
   Vector3,
   DoubleSide,
+  TextureLoader,
+  Color,
 } from 'three'
 import { FontLoader } from 'three/addons/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
@@ -18,6 +20,18 @@ function loadFont(url) {
     loader.load(
       url,
       (font) => resolve(font), // Resolve with the loaded font
+      undefined,
+      (error) => reject(error) // Reject on error
+    )
+  })
+}
+
+function loadTexture(url) {
+  return new Promise((resolve, reject) => {
+    const loader = new TextureLoader()
+    loader.load(
+      url,
+      (texture) => resolve(texture), // Resolve with the loaded font
       undefined,
       (error) => reject(error) // Reject on error
     )
@@ -53,16 +67,39 @@ async function createText(text, x, y, z, index) {
   // const white = 0xfffbf6
   let material = []
 
+  const redGradient = await loadTexture(
+    'https://raw.githubusercontent.com/illysito/NeueRegrade/110cf58630047f652f70c1af6d7be4fa858b2aa6/red-gradient-grain.png'
+  )
+  const blueGradient = await loadTexture(
+    'https://raw.githubusercontent.com/illysito/NeueRegrade/refs/heads/main/blue-gradient-2.png'
+  )
+  const paper = await loadTexture(
+    'https://raw.githubusercontent.com/illysito/NeueRegrade/d4c8a2dcaba93f628f7d44295ad5921cbaa35a51/6.%20FULL%20VERSION%20ON%20hellomocku.com.png'
+  )
+  paper.repeat.set(1, 1)
+  redGradient.repeat.set(4, 4)
+  blueGradient.repeat.set(4, 4)
   // create a default (white) Basic material
   if (index === 0) {
     material = [
-      new MeshStandardMaterial({ color: red }), // Front
+      new MeshPhysicalMaterial({
+        color: red,
+        roughness: 1,
+        metalness: 0,
+        clearcoat: 1,
+        emmisive: new Color(0x000000),
+      }), // Front
       new MeshPhysicalMaterial({ color: blue }), // Sides
       new MeshPhysicalMaterial({ color: yellow, side: DoubleSide }), // Back
     ]
   } else if (index === 2) {
     material = [
-      new MeshStandardMaterial({ color: blue }), // Front
+      new MeshStandardMaterial({
+        color: blue,
+        roughness: 1,
+        metalness: 0,
+        clearcoat: 1,
+      }), // Front
       new MeshPhysicalMaterial({ color: yellow }), // Sides
       new MeshPhysicalMaterial({ color: red, side: DoubleSide }), // Back
     ]
@@ -74,7 +111,12 @@ async function createText(text, x, y, z, index) {
     ]
   } else if (index === 3) {
     material = [
-      new MeshStandardMaterial({ color: red }), // Front
+      new MeshStandardMaterial({
+        color: red,
+        roughness: 1,
+        metalness: 0,
+        clearcoat: 1,
+      }), // Front
       new MeshPhysicalMaterial({ color: blackie }), // Sides
       new MeshPhysicalMaterial({ color: blue, side: DoubleSide }), // Back
     ]

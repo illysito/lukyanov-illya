@@ -30,12 +30,12 @@ class World {
 
     const light1 = createLight(-12, 5, 2, 100, 'white')
     const light2 = createLight(12, -5, 2, 100, 'white')
-    const light3 = createLight(0, 0, 3, 0, 'white')
-    const light_up = createLight(0, 8, 0, 10, 'white')
-    const light_down = createLight(0, -8, 0, 10, 'white')
+    const light3 = createLight(0, 0, 3, 50, 'white')
+    const light_up = createLight(0, 8, 0, 100, 'white')
+    const light_down = createLight(0, -8, 0, 100, 'white')
     this.mouse_light = createLight(0, 0, 3.6, 50, 'white')
     const directional_light = createDirLight(0, 0, -40)
-    const ambient_light = createAmbLight(0xff0000, 100)
+    const ambient_light = createAmbLight(4)
 
     const axisHelper = new AxesHelper(16)
     console.log(axisHelper)
@@ -50,8 +50,8 @@ class World {
       light3,
       light_up,
       light_down,
-      this.mouse_light
-      // directional_light
+      this.mouse_light,
+      directional_light
     )
 
     this.initText()
@@ -102,9 +102,9 @@ class World {
   scrollText(scrollY) {
     let scrollDimmer = 0.006
     this.i.rotation.x += scrollY * scrollDimmer
-    this.l1.rotation.x += scrollY * scrollDimmer
-    this.l2.rotation.x += scrollY * scrollDimmer
-    this.y.rotation.x += scrollY * scrollDimmer
+    this.l1.rotation.x += scrollY * scrollDimmer * 1.2
+    this.l2.rotation.x += scrollY * scrollDimmer * 1.4
+    this.y.rotation.x += scrollY * scrollDimmer * 1.6
   }
 
   updateMouseLight(mouseX, mouseY) {
@@ -124,8 +124,8 @@ class World {
     )
     this.mouse_light.position.x = lightX
     this.mouse_light.position.y = -lightY
-    console.log('mouseX & mouseY: ' + mouseX + ' ' + mouseY)
-    console.log('lightX & lightY: ' + lightX + ' ' + lightY)
+    // console.log('mouseX & mouseY: ' + mouseX + ' ' + mouseY)
+    // console.log('lightX & lightY: ' + lightX + ' ' + lightY)
   }
 }
 

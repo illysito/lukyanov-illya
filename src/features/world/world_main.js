@@ -56,11 +56,13 @@ function hero() {
     previousMouseY = mouseY
   })
   window.addEventListener('scroll', (event) => {
-    console.log(event)
-    let currentScrollY = window.scrollY
-    let scrollDelta = currentScrollY - previousScrollY
-    world.scrollText(scrollDelta)
-    previousScrollY = currentScrollY
+    // console.log(event)
+    if (event) {
+      let currentScrollY = window.scrollY
+      let scrollDelta = currentScrollY - previousScrollY
+      world.scrollText(scrollDelta)
+      previousScrollY = currentScrollY
+    }
   })
 }
 

@@ -2,7 +2,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // IMPORTS
-
+import about from './features/about'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
 import bento_work_variable from './features/bento_work_variable'
@@ -86,6 +86,7 @@ function runHomeFunctions() {
   }
   requestAnimationFrame(bentoWorkVariable)
   // Funcion que hace el MOUSETRAIL de estrellitas
+  about()
   main_scroll()
   projects_scroll()
   mousetrail(trail_wrapper, trail_array)
