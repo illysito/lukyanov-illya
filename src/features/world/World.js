@@ -3,7 +3,7 @@ import { AxesHelper } from 'three'
 
 import { createAmbLight } from './components/ambient_light.js'
 import { createCamera } from './components/camera.js'
-import { createCube } from './components/cube.js'
+import { createSphere } from './components/cube.js'
 import { createDirLight } from './components/directional_light.js'
 import { createLight } from './components/light.js'
 import { createScene } from './components/scene.js'
@@ -26,13 +26,13 @@ class World {
     loop = new Loop(camera, scene, renderer)
     container.append(renderer.domElement)
 
-    this.cube1 = createCube(2, 2, 2, 0, 0, 0)
+    this.sphere1 = createSphere(1.2, -window.innerWidth / 120, 4.8, 0)
 
-    const light1 = createLight(-12, 5, 2, 100, 'white')
-    const light2 = createLight(12, -5, 2, 100, 'white')
-    const light3 = createLight(0, 0, 3, 50, 'white')
-    const light_up = createLight(0, 8, 0, 100, 'white')
-    const light_down = createLight(0, -8, 0, 100, 'white')
+    // const light1 = createLight(-12, 7, 2, 20, 'white')
+    const light2 = createLight(12, -7, 2, 20, 'white')
+    const light3 = createLight(0, 0, 10, 10, 'white')
+    const light_up = createLight(0, 8, 0, 20, 'white')
+    const light_down = createLight(0, -8, 0, 20, 'white')
     this.mouse_light = createLight(0, 0, 3.6, 50, 'white')
     const directional_light = createDirLight(0, 0, -40)
     const ambient_light = createAmbLight(4)
@@ -40,18 +40,19 @@ class World {
     const axisHelper = new AxesHelper(16)
     console.log(axisHelper)
 
-    loop.updatables.push(this.cube1)
+    loop.updatables.push(this.sphere1)
     console.log(directional_light)
 
     scene.add(
       ambient_light,
-      light1,
+      // light1,
       light2,
       light3,
       light_up,
       light_down,
       this.mouse_light,
       directional_light
+      // this.sphere1
     )
 
     this.initText()

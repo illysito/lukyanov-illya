@@ -9,7 +9,7 @@ import {
   Vector3,
   DoubleSide,
   TextureLoader,
-  Color,
+  // Color,
 } from 'three'
 import { FontLoader } from 'three/addons/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
@@ -76,6 +76,7 @@ async function createText(text, x, y, z, index) {
   const paper = await loadTexture(
     'https://raw.githubusercontent.com/illysito/NeueRegrade/d4c8a2dcaba93f628f7d44295ad5921cbaa35a51/6.%20FULL%20VERSION%20ON%20hellomocku.com.png'
   )
+
   paper.repeat.set(1, 1)
   redGradient.repeat.set(4, 4)
   blueGradient.repeat.set(4, 4)
@@ -84,10 +85,11 @@ async function createText(text, x, y, z, index) {
     material = [
       new MeshPhysicalMaterial({
         color: red,
-        roughness: 1,
-        metalness: 0,
         clearcoat: 1,
-        emmisive: new Color(0x000000),
+        transparent: true,
+        opacity: 0.95,
+        // metalness: 0.5,
+        roughness: 0.5,
       }), // Front
       new MeshPhysicalMaterial({ color: blue }), // Sides
       new MeshPhysicalMaterial({ color: yellow, side: DoubleSide }), // Back
@@ -96,26 +98,38 @@ async function createText(text, x, y, z, index) {
     material = [
       new MeshStandardMaterial({
         color: blue,
-        roughness: 1,
-        metalness: 0,
-        clearcoat: 1,
+        transparent: true,
+        opacity: 0.95,
+        roughness: 0.5,
       }), // Front
-      new MeshPhysicalMaterial({ color: yellow }), // Sides
+      new MeshPhysicalMaterial({
+        color: yellow,
+        transparent: true,
+        opacity: 0.95,
+      }), // Sides
       new MeshPhysicalMaterial({ color: red, side: DoubleSide }), // Back
     ]
   } else if (index === 1) {
     material = [
-      new MeshStandardMaterial({ color: yellow }), // Front
-      new MeshPhysicalMaterial({ color: blackie }), // Sides
+      new MeshStandardMaterial({
+        color: yellow,
+        transparent: true,
+        opacity: 0.95,
+        roughness: 0.5,
+      }), // Front
+      new MeshPhysicalMaterial({
+        color: blackie,
+      }), // Sides
       new MeshPhysicalMaterial({ color: blue, side: DoubleSide }), // Back
     ]
   } else if (index === 3) {
     material = [
       new MeshStandardMaterial({
         color: red,
-        roughness: 1,
+        roughness: 0.5,
         metalness: 0,
-        clearcoat: 1,
+        transparent: true,
+        opacity: 0.95,
       }), // Front
       new MeshPhysicalMaterial({ color: blackie }), // Sides
       new MeshPhysicalMaterial({ color: blue, side: DoubleSide }), // Back
@@ -143,7 +157,7 @@ async function createText(text, x, y, z, index) {
   const center = box.getCenter(new Vector3())
   type.position.sub(center) // Center the text around the origin
   // Set the position of the group to where you want it
-  group.position.set(x, y, z)
+  group.position.set(x, y + 1.2, z)
 
   // update the text
   let radiansPerSecond = MathUtils.degToRad(50)

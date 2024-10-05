@@ -4,10 +4,20 @@ import { World } from './World.js'
 
 function hero() {
   // GSAP
-  const hero = document.querySelector('.hero-section')
+  const hero = document.querySelector('.scene__container')
+  const hero_heading_up = document.querySelector('.hero-h')
   gsap.to(hero, {
-    y: 200,
+    y: 300,
     scale: 1.1,
+    scrollTrigger: {
+      trigger: hero,
+      start: 'bottom bottom',
+      end: 'bottom 20%',
+      scrub: true,
+    },
+  })
+  gsap.to(hero_heading_up, {
+    y: 300,
     scrollTrigger: {
       trigger: hero,
       start: 'bottom bottom',
