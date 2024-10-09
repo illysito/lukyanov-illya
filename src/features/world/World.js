@@ -26,8 +26,6 @@ class World {
     loop = new Loop(camera, scene, renderer)
     container.append(renderer.domElement)
 
-    this.sphere1 = createSphere(1.2, -window.innerWidth / 120, 4.8, 0)
-
     // const light1 = createLight(-12, 7, 2, 20, 'white')
     const light2 = createLight(12, -7, 2, 20, 'white')
     const light3 = createLight(0, 0, 10, 10, 'white')
@@ -40,7 +38,7 @@ class World {
     const axisHelper = new AxesHelper(16)
     console.log(axisHelper)
 
-    loop.updatables.push(this.sphere1)
+    // loop.updatables.push(this.sphere1)
     console.log(directional_light)
 
     scene.add(
@@ -52,13 +50,20 @@ class World {
       light_down,
       this.mouse_light,
       directional_light
-      // this.sphere1
     )
 
     this.initText()
+    // this.initTorus()
 
     const resizer = new Resizer(container, camera, renderer)
     console.log(resizer)
+  }
+
+  async initTorus() {
+    this.torus = await createSphere(6.8, 0, 0, 0)
+    loop.updatables.push(this.torus)
+    scene.add(this.torus)
+    // console.log('nothing yet')
   }
   //
   async initText() {

@@ -99,7 +99,7 @@ async function createText(text, x, y, z, index) {
       new MeshStandardMaterial({
         color: blue,
         transparent: true,
-        opacity: 0.95,
+        opacity: 0.88,
         roughness: 0.5,
       }), // Front
       new MeshPhysicalMaterial({
@@ -157,7 +157,8 @@ async function createText(text, x, y, z, index) {
   const center = box.getCenter(new Vector3())
   type.position.sub(center) // Center the text around the origin
   // Set the position of the group to where you want it
-  group.position.set(x, y + 1.2, z)
+  group.position.set(x + 0.4, y - 2, z)
+  group.rotation.z = MathUtils.degToRad(0)
 
   // update the text
   let radiansPerSecond = MathUtils.degToRad(50)
