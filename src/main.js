@@ -81,7 +81,9 @@ function runHomeFunctions() {
   // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
   function bentoWorkVariable() {
     counter++
-    bento_work_variable(counter, workHeader)
+    if (workHeader) {
+      bento_work_variable(counter, workHeader)
+    }
     requestAnimationFrame(bentoWorkVariable)
   }
   requestAnimationFrame(bentoWorkVariable)
