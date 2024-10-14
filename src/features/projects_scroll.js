@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 function projects_scroll() {
-  const images = document.querySelectorAll('.project__img')
+  const images = document.querySelectorAll('.work-img')
   const img_wrappers = document.querySelectorAll('.project__scroll-wrapper')
   const titles = document.querySelectorAll('.project__title-big')
   const descriptions = document.querySelectorAll('.project__explained')
@@ -29,7 +29,7 @@ function projects_scroll() {
   // EFECTO on PARALLAX sobre los HEADINGS
   images.forEach((img) => {
     gsap.to(img, {
-      y: 50,
+      y: -100,
       scale: 1.01,
       scrollTrigger: {
         trigger: img,
