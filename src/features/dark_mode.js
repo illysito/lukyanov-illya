@@ -18,6 +18,9 @@ function dark_mode(isDarkMode) {
   const illy_white = document.querySelector('.me')
   const logo_black = document.querySelector('.logo-whitey')
   const logo = document.querySelector('.logo')
+  const star_black = document.querySelectorAll('.trail__img')
+  const star_white = document.querySelectorAll('.trail__img_white')
+  const link = document.querySelectorAll('.link')
 
   const moon = document.querySelector('.moon')
 
@@ -26,7 +29,14 @@ function dark_mode(isDarkMode) {
 
   const dur = 0.5
   const ez = 'power2.inOut'
-  const textArray = [about_h, about_h_lil, about_p, proj_heading, proj_desc]
+  const textArray = [
+    about_h,
+    about_h_lil,
+    about_p,
+    proj_heading,
+    proj_desc,
+    link,
+  ]
   const singleTextArray = [nav_p, scroll_p]
 
   // let isDarkMode = false
@@ -48,6 +58,20 @@ function dark_mode(isDarkMode) {
           backgroundColor: black,
           duration: dur,
           ease: ez,
+        })
+        star_black.forEach((star) => {
+          gsap.to(star, {
+            opacity: 0,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        star_white.forEach((star) => {
+          gsap.to(star, {
+            opacity: 1,
+            duration: 1 * dur,
+            ease: ez,
+          })
         })
         gsap.to(tag_wrapper, {
           backgroundColor: white,
@@ -102,6 +126,20 @@ function dark_mode(isDarkMode) {
           backgroundColor: white,
           duration: dur,
           ease: ez,
+        })
+        star_black.forEach((star) => {
+          gsap.to(star, {
+            opacity: 1,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        star_white.forEach((star) => {
+          gsap.to(star, {
+            opacity: 0,
+            duration: 1 * dur,
+            ease: ez,
+          })
         })
         gsap.to(tag_wrapper, {
           backgroundColor: black,

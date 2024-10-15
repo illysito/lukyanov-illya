@@ -33,7 +33,7 @@ const circle = document.querySelector('.backdrop-circle')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 
-let isDarkMode = false
+let isDarkMode = true
 
 // let counter = 0
 console.log('counter: ')

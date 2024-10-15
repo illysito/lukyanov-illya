@@ -39,7 +39,9 @@ function hero() {
 
   // THREE.JS
   const container = document.querySelector('#scene-container')
-  const world = new World(container)
+  const container_2 = document.querySelector('#scene-container-2')
+  const world = new World(container, false, true)
+  const world_2 = new World(container_2, true, false)
 
   let mouseX = 0
   let mouseY = 0
@@ -50,6 +52,7 @@ function hero() {
   let previousScrollY = window.scrollY
 
   world.start()
+  world_2.start()
 
   window.addEventListener('mousemove', (event) => {
     mouseX = event.clientX

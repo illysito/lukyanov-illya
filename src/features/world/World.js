@@ -12,19 +12,17 @@ import { Loop } from './systems/Loop.js'
 import { createRenderer } from './systems/renderer.js'
 import { Resizer } from './systems/Resizer.js'
 
-let camera
-let renderer
-let scene
-let loop
-
 class World {
   // 1. Create an instance of the World app
-  constructor(container) {
-    camera = createCamera()
-    scene = createScene()
-    renderer = createRenderer()
-    loop = new Loop(camera, scene, renderer)
-    container.append(renderer.domElement)
+  constructor(container, torus, text) {
+    this.torusFlag = torus
+    this.textFlag = text
+
+    this.camera = createCamera()
+    this.scene = createScene()
+    this.renderer = createRenderer()
+    this.loop = new Loop(this.camera, this.scene, this.renderer)
+    container.append(this.renderer.domElement)
 
     // const light1 = createLight(-12, 7, 2, 20, 'white')
     const light2 = createLight(12, -7, 2, 20, 'white')
@@ -41,7 +39,7 @@ class World {
     // loop.updatables.push(this.sphere1)
     console.log(directional_light)
 
-    scene.add(
+    this.scene.add(
       ambient_light,
       // light1,
       light2,
@@ -52,17 +50,27 @@ class World {
       directional_light
     )
 
-    this.initText()
-    // this.initTorus()
+    if (this.textFlag) {
+      this.initText()
+    }
+    if (this.torusFlag) {
+      this.initTorus()
+    }
 
-    const resizer = new Resizer(container, camera, renderer)
+    const resizer = new Resizer(container, this.camera, this.renderer)
     console.log(resizer)
   }
 
   async initTorus() {
-    this.torus = await createSphere(6.8, 0, 0, 0)
-    loop.updatables.push(this.torus)
-    scene.add(this.torus)
+    const red = 0xff2233
+    const blue = 0x2323ff
+    const yellow = 0xff8500
+    // const blackie = 0x0e0e0e
+    this.torus = await createSphere(6.8, 0, 1, 0, 2, 3, 0, red)
+    this.torus_2 = await createSphere(6.8, 0, 9, 0, 1, 4, 2, yellow)
+    this.torus_3 = await createSphere(6.8, 0, -7, 0, 0, 2, 2, blue)
+    this.loop.updatables.push(this.torus, this.torus_2, this.torus_3)
+    this.scene.add(this.torus, this.torus_2, this.torus_3)
     // console.log('nothing yet')
   }
   //
@@ -72,12 +80,12 @@ class World {
     this.l1 = await createText('L', -window.innerWidth / 360, 1, -2, 1)
     this.l2 = await createText('L', window.innerWidth / 720, -1, -1, 2)
     this.y = await createText('Y', window.innerWidth / 180, 0.5, -1, 3)
-    scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
-    loop.updatables.push(this.i, this.l1, this.l2, this.y)
+    this.scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
+    this.loop.updatables.push(this.i, this.l1, this.l2, this.y)
   }
   // 2. Render the scene
   render() {
-    renderer.render(scene, camera)
+    this.renderer.render(this.scene, this.camera)
   }
 
   lerp(start, end, t) {
@@ -85,11 +93,11 @@ class World {
   }
 
   start() {
-    loop.start()
+    this.loop.start()
   }
 
   stop() {
-    loop.stop()
+    this.loop.stop()
   }
 
   rotateText(mouseX, mouseY) {
