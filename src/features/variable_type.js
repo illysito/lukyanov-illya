@@ -1,9 +1,10 @@
 import { gsap } from 'gsap'
 import SplitType from 'split-type'
 
-function bento_work_variable(counter, workHeader) {
+function variable_type(counter, workHeader, contactHeader) {
   // VARIABLES
   let workHeaderArray = []
+  let contactHeaderArray = []
   let amplitude = 100
   let speed = 0.03
   let offset = 0.65
@@ -68,6 +69,53 @@ function bento_work_variable(counter, workHeader) {
     fontVariationSettings: `'wght' ${k_weight}`,
     ease: 'linear',
   })
+
+  // VARIABLE TYPE CONTACTO
+  contactHeader.forEach((item) => {
+    const chars = new SplitType(item, { types: 'chars' }).chars
+    contactHeaderArray = contactHeaderArray.concat(chars)
+  })
+  let c = contactHeaderArray[0]
+  let o2 = contactHeaderArray[1]
+  let n = contactHeaderArray[2]
+  let t = contactHeaderArray[3]
+  let a = contactHeaderArray[4]
+  let c2 = contactHeaderArray[5]
+  let t2 = contactHeaderArray[6]
+  let o3 = contactHeaderArray[7]
+
+  gsap.set(c, {
+    fontVariationSettings: `'wght' ${w_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(o2, {
+    fontVariationSettings: `'wght' ${o_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(n, {
+    fontVariationSettings: `'wght' ${r_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(t, {
+    fontVariationSettings: `'wght' ${k_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(a, {
+    fontVariationSettings: `'wght' ${k_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(c2, {
+    fontVariationSettings: `'wght' ${r_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(t2, {
+    fontVariationSettings: `'wght' ${o_weight}`,
+    ease: 'linear',
+  })
+  gsap.set(o3, {
+    fontVariationSettings: `'wght' ${w_weight}`,
+    ease: 'linear',
+  })
 }
 
-export default bento_work_variable
+export default variable_type

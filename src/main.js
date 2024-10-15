@@ -3,10 +3,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // IMPORTS
 import about from './features/about'
+import dark_mode from './features/dark_mode'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
-import bento_work_variable from './features/bento_work_variable'
 import main_scroll from './features/main_scroll'
+import menu from './features/menu'
 // import ball from './features/experiments/gradient_ball'
 import mousetrail from './features/mousetrail'
 // import line from './features/experiments/gradient_line'
@@ -17,6 +18,7 @@ import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 import mouse from './features/unused/mouse'
+// import variable_type from './features/variable_type'
 import hero from './features/world/world_main'
 
 import './styles/style.css'
@@ -25,12 +27,15 @@ gsap.registerPlugin(ScrollTrigger)
 
 const circle = document.querySelector('.backdrop-circle')
 // const rect = document.querySelector('.rect')
-const workHeader = document.querySelectorAll('.bento__work-header')
+// const workHeader = document.querySelectorAll('.bento__work-header')
+// const contactHeader = document.querySelectorAll('.contact__work-header')
 // const blob = document.querySelector('.gradball__home')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 
-let counter = 0
+let isDarkMode = false
+
+// let counter = 0
 console.log('counter: ')
 // let frameCount = 0
 // let lastTime = performance.now()
@@ -79,15 +84,17 @@ function runHomeFunctions() {
     console.log('theres no circle')
   }
   // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
-  function bentoWorkVariable() {
-    counter++
-    if (workHeader) {
-      bento_work_variable(counter, workHeader)
-    }
-    requestAnimationFrame(bentoWorkVariable)
-  }
-  requestAnimationFrame(bentoWorkVariable)
+  // function variableType() {
+  //   counter++
+  //   if (workHeader) {
+  //     variable_type(counter, workHeader, contactHeader)
+  //   }
+  //   requestAnimationFrame(variableType)
+  // }
+  // requestAnimationFrame(variableType)
   // Funcion que hace el MOUSETRAIL de estrellitas
+  dark_mode(isDarkMode)
+  menu()
   about()
   main_scroll()
   projects_scroll()

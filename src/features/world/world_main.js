@@ -50,6 +50,7 @@ function hero() {
   let previousScrollY = window.scrollY
 
   world.start()
+
   window.addEventListener('mousemove', (event) => {
     mouseX = event.clientX
     mouseY = event.clientY
