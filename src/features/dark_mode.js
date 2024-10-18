@@ -103,7 +103,7 @@ function dark_mode(isDarkMode) {
               duration: 1.5 * dur,
               ease: ez,
             })
-            console.log('should be dark')
+            // console.log('should be dark')
           },
         })
       },
@@ -176,7 +176,7 @@ function dark_mode(isDarkMode) {
           },
         })
         // IMAGE SHIFTING:
-        console.log('should be light')
+        // console.log('should be light')
       },
     })
   }
@@ -207,7 +207,7 @@ function dark_mode(isDarkMode) {
   }
 
   handleModes()
-  console.log('isDarkMode: ' + isDarkMode)
+  // console.log('isDarkMode: ' + isDarkMode)
 
   button.addEventListener('click', handleModes)
   button.addEventListener('mouseover', hoverIn)

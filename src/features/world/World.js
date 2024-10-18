@@ -1,5 +1,4 @@
 import { gsap } from 'gsap'
-import { AxesHelper } from 'three'
 
 import { createAmbLight } from './components/ambient_light.js'
 import { createCamera } from './components/camera.js'
@@ -13,18 +12,50 @@ import { createRenderer } from './systems/renderer.js'
 import { Resizer } from './systems/Resizer.js'
 
 class World {
-  // 1. Create an instance of the World app
-  constructor(container, torus, text) {
+  constructor(container, torus, text, flagArray) {
+    // RESPONSIVE HANDLING
+    this.isMobile = false
+    this.isLandscape = false
+    this.isTablet = false
+    this.isPC = false
+    this.flagArray = flagArray
+    this.xPosition = []
+    this.yPosition = []
+    this.size
+    this.depth
+
+    if (this.flagArray[0]) {
+      this.isMobile = true
+    } else if (this.flagArray[1]) {
+      this.isLandscape = true
+    } else if (this.flagArray[2]) {
+      this.isTablet = true
+    } else if (this.flagArray[3]) {
+      this.isPC = true
+    } else {
+      console.log('thres no flag array working here or what?')
+    }
+    console.log('isMobile: ' + this.isMobile)
+    console.log('isLandscape: ' + this.isLandscape)
+    console.log('isTablet: ' + this.isTablet)
+    console.log('isPC: ' + this.isPC)
+
+    // SETUP FUNCTIONS
+    this.setTextArray(this.flagArray)
+    console.log('widthDivider: ' + this.xPosition)
+
+    // IS IT TORUS OR TEXT?
     this.torusFlag = torus
     this.textFlag = text
 
+    // THREE.JS SETUP
     this.camera = createCamera()
     this.scene = createScene()
     this.renderer = createRenderer()
     this.loop = new Loop(this.camera, this.scene, this.renderer)
     container.append(this.renderer.domElement)
 
-    // const light1 = createLight(-12, 7, 2, 20, 'white')
+    // LIGHTS
     const light2 = createLight(12, -7, 2, 20, 'white')
     const light3 = createLight(0, 0, 10, 10, 'white')
     const light_up = createLight(0, 8, 0, 20, 'white')
@@ -33,12 +64,10 @@ class World {
     const directional_light = createDirLight(0, 0, -40)
     const ambient_light = createAmbLight(4)
 
-    const axisHelper = new AxesHelper(16)
-    console.log(axisHelper)
-
     // loop.updatables.push(this.sphere1)
-    console.log(directional_light)
+    // console.log(directional_light)
 
+    // THE SCENE
     this.scene.add(
       ambient_light,
       // light1,
@@ -57,8 +86,36 @@ class World {
       this.initTorus()
     }
 
+    // RESIZER
     const resizer = new Resizer(container, this.camera, this.renderer)
     console.log(resizer)
+  }
+
+  setTextArray() {
+    //en this.xPosition, cuanto más grande el número, más hacia el centro
+    if (this.isMobile) {
+      this.xPosition = [140, -320, -180, 260]
+      this.yPosition = [3, 4, -2, -3]
+      this.size = 80
+      this.depth = 0.6
+    } else if (this.isLandscape) {
+      this.xPosition = [90, 300, 300, 100]
+      this.yPosition = [-1, 1, -1, 0.5]
+      this.size = 100
+      this.depth = 1
+    } else if (this.isTablet) {
+      this.xPosition = [110, 320, 400, 140]
+      this.yPosition = [-1, 1, -1, 0.5]
+      this.size = 140
+      this.depth = 1
+    } else if (this.isPC) {
+      this.xPosition = [140, 360, 720, 180]
+      this.yPosition = [-1, 1, -1, 0.5]
+      this.size = 180
+      this.depth = 1.2
+    } else {
+      console.log('wut?')
+    }
   }
 
   async initTorus() {
@@ -75,13 +132,51 @@ class World {
   }
   //
   async initText() {
-    // Create the text and add it to the scene
-    this.i = await createText('I', -window.innerWidth / 140, -1, -2, 0)
-    this.l1 = await createText('L', -window.innerWidth / 360, 1, -2, 1)
-    this.l2 = await createText('L', window.innerWidth / 720, -1, -1, 2)
-    this.y = await createText('Y', window.innerWidth / 180, 0.5, -1, 3)
-    this.scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
-    this.loop.updatables.push(this.i, this.l1, this.l2, this.y)
+    // async function createText(text, x, y, z, index)
+    if (this.xPosition) {
+      // Create the text and add it to the scene
+      console.log('im here!')
+      this.i = await createText(
+        'I',
+        -window.innerWidth / this.xPosition[0],
+        this.yPosition[0],
+        -2,
+        this.size,
+        this.depth,
+        0
+      )
+      this.l1 = await createText(
+        'L',
+        -window.innerWidth / this.xPosition[1],
+        this.yPosition[1],
+        -2,
+        this.size,
+        this.depth,
+        1
+      )
+      this.l2 = await createText(
+        'L',
+        window.innerWidth / this.xPosition[2],
+        this.yPosition[2],
+        -1,
+        this.size,
+        this.depth,
+        2
+      )
+      this.y = await createText(
+        'Y',
+        window.innerWidth / this.xPosition[3],
+        this.yPosition[3],
+        -1,
+        this.size,
+        this.depth,
+        3
+      )
+      this.scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
+      this.loop.updatables.push(this.i, this.l1, this.l2, this.y)
+      console.log(this.i.visible) // Should be true
+      console.log(this.i.scale) // Should not be zero
+    }
   }
   // 2. Render the scene
   render() {

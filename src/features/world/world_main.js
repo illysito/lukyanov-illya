@@ -3,57 +3,42 @@ import { gsap } from 'gsap'
 import { World } from './World.js'
 
 function hero() {
-  // GSAP
-  const hero = document.querySelector('.scene__container')
-  const hero_heading_up = document.querySelector('.hero-h')
-  const scroll_p = document.querySelector('.scroll-p')
-  gsap.to(hero, {
-    y: 200,
-    scale: 1.1,
-    scrollTrigger: {
-      trigger: hero,
-      start: 'bottom bottom',
-      end: 'bottom 20%',
-      scrub: true,
-    },
-  })
-  gsap.to(hero_heading_up, {
-    y: 300,
-    scrollTrigger: {
-      trigger: hero,
-      start: 'bottom bottom',
-      end: 'bottom 20%',
-      scrub: true,
-    },
-  })
-  gsap.to(scroll_p, {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: scroll_p,
-      start: 'top 92%',
-      end: 'top 86%',
-      scrub: true,
-      markers: false,
-    },
-  })
-
   // THREE.JS
-  const container = document.querySelector('#scene-container')
-  const container_2 = document.querySelector('#scene-container-2')
-  const world = new World(container, false, true)
-  const world_2 = new World(container_2, true, false)
+  // FLAG ARRAY RESPONSIVE
+  let flagArray
+  function isMobile() {
+    return window.innerWidth < 479
+  }
+  function isLandscape() {
+    return window.innerWidth >= 479 && window.innerWidth < 767
+  }
+  function isTablet() {
+    return window.innerWidth >= 767 && window.innerWidth < 991
+  }
+  function isPC() {
+    return window.innerWidth >= 991
+  }
+  flagArray = [isMobile(), isLandscape(), isTablet(), isPC()]
+  console.log('flagArray: ' + flagArray)
 
+  // CONST
+  const CONTAINER = document.querySelector('#scene-container')
+  const CONTAINER_2 = document.querySelector('#scene-container-2')
+  const WORLD = new World(CONTAINER, false, true, flagArray)
+  const WORLD_2 = new World(CONTAINER_2, true, false, flagArray)
+
+  // VARIABLES
   let mouseX = 0
   let mouseY = 0
-  // let currentX = 0
-  // let currentY = 0
   let previousMouseX = 0
   let previousMouseY = 0
   let previousScrollY = window.scrollY
 
-  world.start()
-  world_2.start()
+  // INIT
+  WORLD.start()
+  WORLD_2.start()
 
+  // EVENT LISTENERS
   window.addEventListener('mousemove', (event) => {
     mouseX = event.clientX
     mouseY = event.clientY
@@ -75,8 +60,8 @@ function hero() {
     const deltaY = mouseY - previousMouseY
     // currentX = world.lerp(deltaX, mouseX, 1)
     // currentY = world.lerp(currentY, mouseY, 1)
-    world.rotateText(deltaX, deltaY)
-    world.updateMouseLight(mouseX, mouseY)
+    WORLD.rotateText(deltaX, deltaY)
+    WORLD.updateMouseLight(mouseX, mouseY)
     previousMouseX = mouseX
     previousMouseY = mouseY
   })
@@ -85,9 +70,33 @@ function hero() {
     if (event) {
       let currentScrollY = window.scrollY
       let scrollDelta = currentScrollY - previousScrollY
-      world.scrollText(scrollDelta)
+      WORLD.scrollText(scrollDelta)
       previousScrollY = currentScrollY
     }
+  })
+
+  // GSAP
+  const hero = document.querySelector('.scene__container')
+  const scroll_p = document.querySelector('.scroll-p')
+  gsap.to(hero, {
+    y: 200,
+    scale: 1.1,
+    scrollTrigger: {
+      trigger: hero,
+      start: 'bottom bottom',
+      end: 'bottom 20%',
+      scrub: true,
+    },
+  })
+  gsap.to(scroll_p, {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: scroll_p,
+      start: 'top 92%',
+      end: 'top 86%',
+      scrub: true,
+      markers: false,
+    },
   })
 }
 

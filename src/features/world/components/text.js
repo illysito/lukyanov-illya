@@ -38,7 +38,7 @@ function loadTexture(url) {
   })
 }
 
-async function createText(text, x, y, z, index) {
+async function createText(text, x, y, z, size, depth, index) {
   // font loading
   // resource URL
   const url =
@@ -50,8 +50,8 @@ async function createText(text, x, y, z, index) {
   // create a geometry
   const textGeometry = new TextGeometry(text, {
     font: font,
-    size: window.innerWidth / 180,
-    depth: 1.2, // Extrusion depth
+    size: window.innerWidth / size,
+    depth: depth, // Extrusion depth
     curveSegments: 30,
     bevelEnabled: true,
     bevelThickness: 0.2, // How deep into the text the bevel goes

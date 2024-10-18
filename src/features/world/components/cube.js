@@ -36,7 +36,7 @@ async function createSphere(r, x, y, z, r1, r2, r3, color) {
     // map: texture,
     color: color,
     metalness: 0.2,
-    roughnes: 0,
+    roughness: 0,
     // transparent: true,
     opacity: 1,
   })
