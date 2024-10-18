@@ -65,15 +65,17 @@ function hero() {
     previousMouseX = mouseX
     previousMouseY = mouseY
   })
-  window.addEventListener('scroll', (event) => {
-    // console.log(event)
-    if (event) {
-      let currentScrollY = window.scrollY
-      let scrollDelta = currentScrollY - previousScrollY
-      WORLD.scrollText(scrollDelta)
-      previousScrollY = currentScrollY
-    }
-  })
+  if (!isMobile && !isLandscape) {
+    window.addEventListener('scroll', (event) => {
+      // console.log(event)
+      if (event) {
+        let currentScrollY = window.scrollY
+        let scrollDelta = currentScrollY - previousScrollY
+        WORLD.scrollText(scrollDelta)
+        previousScrollY = currentScrollY
+      }
+    })
+  }
   window.addEventListener('resize', () => {
     flagArray = [isMobile(), isLandscape(), isTablet(), isPC()]
     console.log('flagArray: ' + flagArray)
