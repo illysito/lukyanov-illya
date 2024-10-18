@@ -74,6 +74,10 @@ function hero() {
       previousScrollY = currentScrollY
     }
   })
+  window.addEventListener('resize', () => {
+    flagArray = [isMobile(), isLandscape(), isTablet(), isPC()]
+    console.log('flagArray: ' + flagArray)
+  })
 
   // GSAP
   const hero = document.querySelector('.scene__container')

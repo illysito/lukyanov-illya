@@ -95,8 +95,8 @@ class World {
     //en this.xPosition, cuanto más grande el número, más hacia el centro
     if (this.isMobile) {
       this.xPosition = [140, -320, -180, 260]
-      this.yPosition = [3, 4, -2, -3]
-      this.size = 80
+      this.yPosition = [3, 4, -2, -2]
+      this.size = 90
       this.depth = 0.6
     } else if (this.isLandscape) {
       this.xPosition = [90, 300, 300, 100]
@@ -194,6 +194,30 @@ class World {
   stop() {
     this.loop.stop()
   }
+
+  // clearScene() {
+  //   this.scene.traverse((object) => {
+  //     if (object.isMesh || object.isText) {
+  //       if (object.geometry) {
+  //         object.geometry.dispose()
+  //       }
+
+  //       if (object.material) {
+  //         if (Array.isArray(object.material)) {
+  //           object.material.forEach((material) => material.dispose())
+  //         } else {
+  //           object.material.dispose()
+  //         }
+  //       }
+
+  //       this.scene.remove(object)
+  //     }
+  //   })
+  //   this.scene.remove(this.i, this.l1, this.l2, this.y)
+  //   this.loop.updatables = this.loop.updatables.filter(
+  //     (updatable) => ![this.i, this.l1, this.l2, this.y].includes(updatable)
+  //   )
+  // }
 
   rotateText(mouseX, mouseY) {
     let rotationDimmerX = 0.0008
