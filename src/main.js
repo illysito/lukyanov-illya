@@ -33,6 +33,10 @@ gsap.registerPlugin(ScrollTrigger)
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 
+function isMobile() {
+  return window.innerWidth < 479
+}
+
 let isDarkMode = true
 
 // let counter = 0
@@ -96,7 +100,9 @@ function runHomeFunctions() {
   menu()
   about()
   main_scroll()
-  projects_scroll()
+  if (!isMobile()) {
+    projects_scroll()
+  }
   mousetrail(trail_wrapper, trail_array)
   // observe()
   projects()
