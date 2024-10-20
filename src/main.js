@@ -38,6 +38,7 @@ function isMobile() {
 }
 
 let isDarkMode = true
+let isMobileVar = isMobile()
 
 // let counter = 0
 // let frameCount = 0
@@ -75,7 +76,6 @@ window.addEventListener('resize', () => {
     ScrollTrigger.refresh()
   }, 200) // Adjust the timeout value as needed
 })
-
 // ------------ HOME FUNCTIONS ------------ //
 
 function runHomeFunctions() {
@@ -99,7 +99,7 @@ function runHomeFunctions() {
   dark_mode(isDarkMode)
   menu()
   about()
-  main_scroll()
+  main_scroll(isMobileVar)
   if (!isMobile()) {
     projects_scroll()
   }
