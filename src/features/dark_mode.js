@@ -21,8 +21,27 @@ function dark_mode(isDarkMode) {
   const star_black = document.querySelectorAll('.trail__img')
   const star_white = document.querySelectorAll('.trail__img_white')
   const link = document.querySelectorAll('.link')
+  //contact
+  const contact_header = document.querySelector('.contact__work-header')
+  const field_label = document.querySelectorAll('.field-label')
+  const text_field = document.querySelectorAll('.text-field')
+  const field_stars_black = document.querySelectorAll('.field-star-black')
+  const field_stars_white = document.querySelectorAll('.field-star-white')
+  const success = document.querySelector('.success-message')
+  // nature
+  const mountains_black = document.querySelector('.mountains-black')
+  const mountains_white = document.querySelector('.mountains-white')
+  const sun = document.querySelector('.side__sun')
+  // footer
+  const footer = document.querySelector('.footer')
+  const footer_titles = document.querySelectorAll('.footer-title')
+  const footer_text = document.querySelectorAll('.footer-text')
+  const contact_text = document.querySelectorAll('.contact-text')
+  const made_text = document.querySelectorAll('.made-text')
 
   const moon = document.querySelector('.moon')
+  const nature_moon_black = document.querySelector('.moon_black')
+  const nature_moon_white = document.querySelector('.moon_white')
 
   const button = document.querySelector('.darkmode-button')
   const body = document.body
@@ -36,7 +55,11 @@ function dark_mode(isDarkMode) {
     proj_heading,
     proj_desc,
     link,
+    field_label,
+    text_field,
   ]
+  const footerTextArray = [footer_titles, footer_text, contact_text, made_text]
+
   const singleTextArray = [nav_p, scroll_p]
 
   // let isDarkMode = false
@@ -59,6 +82,17 @@ function dark_mode(isDarkMode) {
           duration: dur,
           ease: ez,
         })
+        gsap.to(footer, {
+          backgroundColor: white,
+          duration: dur,
+          ease: ez,
+        })
+        gsap.to(success, {
+          color: white,
+          borderColor: white,
+          duration: dur,
+          ease: ez,
+        })
         star_black.forEach((star) => {
           gsap.to(star, {
             opacity: 0,
@@ -73,7 +107,41 @@ function dark_mode(isDarkMode) {
             ease: ez,
           })
         })
-        gsap.to(tag_wrapper, {
+        field_stars_black.forEach((star) => {
+          gsap.to(star, {
+            opacity: 0,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        field_stars_white.forEach((star) => {
+          gsap.to(star, {
+            opacity: 1,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        gsap.to(mountains_black, {
+          opacity: 0,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(mountains_white, {
+          opacity: 1,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(nature_moon_black, {
+          opacity: 0,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(nature_moon_white, {
+          opacity: 1,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to([tag_wrapper, sun], {
           backgroundColor: white,
           duration: dur,
           ease: ez,
@@ -88,6 +156,25 @@ function dark_mode(isDarkMode) {
             })
           })
         }
+        for (let i = 0; i < footerTextArray.length; i++) {
+          footerTextArray[i].forEach((el) => {
+            gsap.to(el, {
+              color: black,
+              duration: dur,
+              ease: ez,
+            })
+          })
+        }
+        gsap.to(text_field, {
+          borderColor: white,
+          duration: dur,
+          ease: ez,
+        })
+        gsap.to(contact_header, {
+          color: white,
+          duration: dur,
+          ease: ez,
+        })
         gsap.to(singleTextArray, {
           color: white,
           duration: dur,
@@ -127,6 +214,17 @@ function dark_mode(isDarkMode) {
           duration: dur,
           ease: ez,
         })
+        gsap.to(footer, {
+          backgroundColor: black,
+          duration: dur,
+          ease: ez,
+        })
+        gsap.to(success, {
+          color: black,
+          borderColor: black,
+          duration: dur,
+          ease: ez,
+        })
         star_black.forEach((star) => {
           gsap.to(star, {
             opacity: 1,
@@ -141,12 +239,46 @@ function dark_mode(isDarkMode) {
             ease: ez,
           })
         })
-        gsap.to(tag_wrapper, {
+        field_stars_black.forEach((star) => {
+          gsap.to(star, {
+            opacity: 1,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        field_stars_white.forEach((star) => {
+          gsap.to(star, {
+            opacity: 0,
+            duration: 1 * dur,
+            ease: ez,
+          })
+        })
+        gsap.to(mountains_black, {
+          opacity: 1,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(mountains_white, {
+          opacity: 0,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(nature_moon_black, {
+          opacity: 1,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to(nature_moon_white, {
+          opacity: 0,
+          duration: 1 * dur,
+          ease: ez,
+        })
+        gsap.to([tag_wrapper, sun], {
           backgroundColor: black,
           duration: dur,
           ease: ez,
         })
-        // TYPE TO White:
+        // TYPE TO Black:
         for (let i = 0; i < textArray.length; i++) {
           textArray[i].forEach((el) => {
             gsap.to(el, {
@@ -156,6 +288,25 @@ function dark_mode(isDarkMode) {
             })
           })
         }
+        for (let i = 0; i < footerTextArray.length; i++) {
+          footerTextArray[i].forEach((el) => {
+            gsap.to(el, {
+              color: white,
+              duration: dur,
+              ease: ez,
+            })
+          })
+        }
+        gsap.to(text_field, {
+          borderColor: black,
+          duration: dur,
+          ease: ez,
+        })
+        gsap.to(contact_header, {
+          color: black,
+          duration: dur,
+          ease: ez,
+        })
         gsap.to(singleTextArray, {
           color: black,
           duration: dur,

@@ -12,13 +12,13 @@ import menu from './features/menu'
 import mousetrail from './features/mousetrail'
 // import line from './features/experiments/gradient_line'
 // import mouse from './features/unused/mouse'
-// import nature from './features/nature'
+import nature from './features/nature'
 // import observe from './features/observer'
 import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 // import mouse from './features/unused/mouse'
-// import variable_type from './features/variable_type'
+import variable_type from './features/variable_type'
 import hero from './features/world/world_main'
 
 import './styles/style.css'
@@ -28,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger)
 // const circle = document.querySelector('.backdrop-circle')
 // const rect = document.querySelector('.rect')
 // const workHeader = document.querySelectorAll('.bento__work-header')
-// const contactHeader = document.querySelectorAll('.contact__work-header')
+const contactHeader = document.querySelectorAll('.contact__work-header')
 // const blob = document.querySelector('.gradball__home')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
@@ -37,10 +37,15 @@ function isMobile() {
   return window.innerWidth < 479
 }
 
+// function isMobileOrBelow() {
+//   return window.innerWidth < 767
+// }
+
 let isDarkMode = true
 let isMobileVar = isMobile()
+// let isMobileOrBelowVar = isMobileOrBelow()
 
-// let counter = 0
+let counter = 0
 // let frameCount = 0
 // let lastTime = performance.now()
 
@@ -87,14 +92,12 @@ function runHomeFunctions() {
   //   console.log('theres no circle')
   // }
   // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
-  // function variableType() {
-  //   counter++
-  //   if (workHeader) {
-  //     variable_type(counter, workHeader, contactHeader)
-  //   }
-  //   requestAnimationFrame(variableType)
-  // }
-  // requestAnimationFrame(variableType)
+  function variableType() {
+    counter++
+    variable_type(counter, contactHeader)
+    requestAnimationFrame(variableType)
+  }
+  requestAnimationFrame(variableType)
   // Funcion que hace el MOUSETRAIL de estrellitas
   dark_mode(isDarkMode)
   menu()
@@ -107,7 +110,7 @@ function runHomeFunctions() {
   // observe()
   projects()
   // Luna y Sol bajando y subiendo de la montaña
-  // nature()
+  nature()
 }
 
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //

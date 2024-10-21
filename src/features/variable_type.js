@@ -1,9 +1,9 @@
 import { gsap } from 'gsap'
 import SplitType from 'split-type'
 
-function variable_type(counter, workHeader, contactHeader) {
+function variable_type(counter, contactHeader) {
   // VARIABLES
-  let workHeaderArray = []
+  // let workHeaderArray = []
   let contactHeaderArray = []
   let amplitude = 100
   let speed = 0.03
@@ -44,31 +44,31 @@ function variable_type(counter, workHeader, contactHeader) {
   )
 
   // VARIABLE TYPE WORK
-  workHeader.forEach((item) => {
-    const chars = new SplitType(item, { types: 'chars' }).chars
-    workHeaderArray = workHeaderArray.concat(chars)
-  })
-  let w = workHeaderArray[0]
-  let o = workHeaderArray[1]
-  let r = workHeaderArray[2]
-  let k = workHeaderArray[3]
+  // workHeader.forEach((item) => {
+  //   const chars = new SplitType(item, { types: 'chars' }).chars
+  //   workHeaderArray = workHeaderArray.concat(chars)
+  // })
+  // let w = workHeaderArray[0]
+  // let o = workHeaderArray[1]
+  // let r = workHeaderArray[2]
+  // let k = workHeaderArray[3]
 
-  gsap.set(w, {
-    fontVariationSettings: `'wght' ${w_weight}`,
-    ease: 'linear',
-  })
-  gsap.set(o, {
-    fontVariationSettings: `'wght' ${o_weight}`,
-    ease: 'linear',
-  })
-  gsap.set(r, {
-    fontVariationSettings: `'wght' ${r_weight}`,
-    ease: 'linear',
-  })
-  gsap.set(k, {
-    fontVariationSettings: `'wght' ${k_weight}`,
-    ease: 'linear',
-  })
+  // gsap.set(w, {
+  //   fontVariationSettings: `'wght' ${w_weight}`,
+  //   ease: 'linear',
+  // })
+  // gsap.set(o, {
+  //   fontVariationSettings: `'wght' ${o_weight}`,
+  //   ease: 'linear',
+  // })
+  // gsap.set(r, {
+  //   fontVariationSettings: `'wght' ${r_weight}`,
+  //   ease: 'linear',
+  // })
+  // gsap.set(k, {
+  //   fontVariationSettings: `'wght' ${k_weight}`,
+  //   ease: 'linear',
+  // })
 
   // VARIABLE TYPE CONTACTO
   contactHeader.forEach((item) => {
