@@ -195,6 +195,7 @@ function dark_mode(isDarkMode) {
         })
       },
     })
+    resetPointerEvents()
   }
 
   function lightMode() {
@@ -330,9 +331,19 @@ function dark_mode(isDarkMode) {
         // console.log('should be light')
       },
     })
+    resetPointerEvents()
+  }
+
+  function resetPointerEvents() {
+    gsap.set(button, {
+      pointerEvents: 'auto',
+    })
   }
 
   function handleModes() {
+    gsap.set(button, {
+      pointerEvents: 'none',
+    })
     if (!isDarkMode) {
       darkMode()
     } else {

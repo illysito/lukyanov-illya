@@ -2,7 +2,7 @@ import { gsap } from 'gsap'
 
 import { World } from './World.js'
 
-function hero() {
+function world_main() {
   // THREE.JS
   // FLAG ARRAY RESPONSIVE
   let flagArray
@@ -78,30 +78,6 @@ function hero() {
     flagArray = [isMobile(), isLandscape(), isTablet(), isPC()]
     console.log('flagArray: ' + flagArray)
   })
-
-  // GSAP
-  const hero = document.querySelector('.scene__container')
-  const scroll_p = document.querySelector('.scroll-p')
-  gsap.to(hero, {
-    y: 200,
-    scale: 1.1,
-    scrollTrigger: {
-      trigger: hero,
-      start: 'bottom bottom',
-      end: 'bottom 20%',
-      scrub: true,
-    },
-  })
-  gsap.to(scroll_p, {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: scroll_p,
-      start: 'top 92%',
-      end: 'top 86%',
-      scrub: true,
-      markers: false,
-    },
-  })
 }
 
-export default hero
+export default world_main

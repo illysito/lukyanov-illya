@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // IMPORTS
 import about from './features/about'
 import dark_mode from './features/dark_mode'
+import hero from './features/hero'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
 import main_scroll from './features/main_scroll'
@@ -13,13 +14,15 @@ import mousetrail from './features/mousetrail'
 // import line from './features/experiments/gradient_line'
 // import mouse from './features/unused/mouse'
 import nature from './features/nature'
+import preloader_animation from './features/preloader_animation'
+import preloader_count from './features/preloader_count'
 // import observe from './features/observer'
 import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
-import hero from './features/world/world_main'
+import world_main from './features/world/world_main'
 
 import './styles/style.css'
 
@@ -37,13 +40,13 @@ function isMobile() {
   return window.innerWidth < 479
 }
 
-// function isMobileOrBelow() {
-//   return window.innerWidth < 767
-// }
+function isMobileOrBelow() {
+  return window.innerWidth < 767
+}
 
 let isDarkMode = true
 let isMobileVar = isMobile()
-// let isMobileOrBelowVar = isMobileOrBelow()
+let isMobileOrBelowVar = isMobileOrBelow()
 
 let counter = 0
 // let frameCount = 0
@@ -81,10 +84,32 @@ window.addEventListener('resize', () => {
     ScrollTrigger.refresh()
   }, 200) // Adjust the timeout value as needed
 })
+
+// ------------ PRELOADER ----------------- //
+function init() {
+  // Check if the preloader has been shown before
+  const preloaderShown = localStorage.getItem('preloaderShown')
+
+  if (!preloaderShown) {
+    // Show the preloader if it hasn't been shown before
+    document.querySelector('.preloader-counter-wrapper').style.display = 'flex'
+    document.querySelector('.preloader-overlay').style.display = 'flex'
+    preloader_count()
+    preloader_animation()
+  } else {
+    // Hide the preloader if it has been shown before
+    document.querySelector('.preloader-counter-wrapper').style.display = 'none'
+    document.querySelector('.preloader-overlay').style.display = 'none'
+  }
+}
+init()
 // ------------ HOME FUNCTIONS ------------ //
 
 function runHomeFunctions() {
   // Funcion que hace que la bolita siga al MOUSE
+  if (!isMobileOrBelowVar) {
+    world_main()
+  }
   hero()
   // if (circle) {
   //   mouse(circle)
@@ -103,7 +128,7 @@ function runHomeFunctions() {
   menu()
   about()
   main_scroll(isMobileVar)
-  if (!isMobile()) {
+  if (!isMobileOrBelowVar) {
     projects_scroll()
   }
   mousetrail(trail_wrapper, trail_array)
