@@ -6,6 +6,7 @@ function dark_mode(isDarkMode) {
   const black = '#0e0e0e'
 
   const nav_p = document.querySelector('.nav-p')
+  const language = document.querySelectorAll('.language')
   const scroll_p = document.querySelector('.scroll-p')
   const about_h = document.querySelectorAll('.about-h')
   const about_h_lil = document.querySelectorAll('.about-h-little')
@@ -57,6 +58,7 @@ function dark_mode(isDarkMode) {
     link,
     field_label,
     text_field,
+    language,
   ]
   const footerTextArray = [footer_titles, footer_text, contact_text, made_text]
 
