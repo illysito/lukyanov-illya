@@ -16,7 +16,7 @@ function projects_scroll() {
     let random = randomFactor
     // if (index === 0) random = 0.4
     gsap.to(img, {
-      y: -60 * random,
+      y: -80 * random,
       scale: 1.02,
       scrollTrigger: {
         trigger: img,
