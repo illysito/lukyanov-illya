@@ -42,7 +42,7 @@ async function createText(text, x, y, z, size, depth, index) {
   // font loading
   // resource URL
   const url =
-    'https://raw.githubusercontent.com/illysito/NeueRegrade/refs/heads/main/Neue%20Regrade_Bold.json?token=GHSAT0AAAAAACYIDOOULFZ5F7HA6NN5LTDWZX64AVQ'
+    'https://raw.githubusercontent.com/illysito/NeueRegrade/d5a1e43aab6950247fdceecc09c74ff8e0172b80/Neue%20Regrade_Bold.json'
 
   const font = await loadFont(url)
   // onLoad callback

@@ -4,14 +4,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // IMPORTS
 import about from './features/about'
 import dark_mode from './features/dark_mode'
+// import ball from './features/experiments/gradient_ball'
+// import line from './features/experiments/gradient_line'
 import hero from './features/hero'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
 import main_scroll from './features/main_scroll'
 import menu from './features/menu'
-// import ball from './features/experiments/gradient_ball'
 import mousetrail from './features/mousetrail'
-// import line from './features/experiments/gradient_line'
 // import mouse from './features/unused/mouse'
 import nature from './features/nature'
 import preloader_animation from './features/preloader_animation'
@@ -32,7 +32,7 @@ gsap.registerPlugin(ScrollTrigger)
 // const rect = document.querySelector('.rect')
 // const workHeader = document.querySelectorAll('.bento__work-header')
 const contactHeader = document.querySelectorAll('.contact__work-header')
-// const blob = document.querySelector('.gradball__home')
+// const blob = document.querySelector('.gradball')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 
@@ -141,7 +141,7 @@ function runHomeFunctions() {
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //
 
 // function runExpFunctions() {
-//   ball()
+//   ball(blob)
 //   line()
 // }
 
@@ -150,7 +150,7 @@ function runHomeFunctions() {
 // if (document.body.classList.contains('body__home')) {
 // runHomeFunctions()
 // } else if (document.body.classList.contains('body__experiments')) {
-//   runExpFunctions()
 // }
 set()
+// runExpFunctions()
 runHomeFunctions()
