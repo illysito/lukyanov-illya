@@ -28,3 +28,11 @@ select:-webkit-autofill {
   color: #fffbf6 !important;
   /* You can add other styles as needed */
 }
+
+canvas {
+  position: fixed;
+  border-radius: 50%;
+  width: 40%;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, -50%);
+}

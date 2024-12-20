@@ -20,6 +20,7 @@ import preloader_count from './features/preloader_count'
 import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
+import breaths from './features/shaders/breaths'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
 import world_main from './features/world/world_main'
@@ -138,6 +139,10 @@ function runHomeFunctions() {
   nature()
 }
 
+function runShaders() {
+  breaths()
+}
+
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //
 
 // function runExpFunctions() {
@@ -153,4 +158,5 @@ function runHomeFunctions() {
 // }
 set()
 // runExpFunctions()
-runHomeFunctions()
+if (!document.body.classList.contains('body__shaders')) runHomeFunctions()
+runShaders()
