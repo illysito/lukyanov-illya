@@ -21,6 +21,7 @@ import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 import breaths from './features/shaders/breaths'
+import kaleidoscope from './features/shaders/kaleidoscope'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
 import world_main from './features/world/world_main'
@@ -141,6 +142,7 @@ function runHomeFunctions() {
 
 function runShaders() {
   breaths()
+  kaleidoscope()
 }
 
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //

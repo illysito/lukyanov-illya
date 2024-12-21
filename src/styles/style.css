@@ -29,10 +29,17 @@ select:-webkit-autofill {
   /* You can add other styles as needed */
 }
 
-canvas {
+#breathing_canvas {
   position: fixed;
   border-radius: 50%;
   width: 40%;
   aspect-ratio: 1/1;
   transform: translate(-50%, -50%);
+}
+
+#kal_canvas {
+  /* position: fixed; */
+  width: 100%;
+  height: 100svh;
+  /* transform: translate(-50%, -50%); */
 }
