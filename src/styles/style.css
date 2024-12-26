@@ -29,6 +29,15 @@ select:-webkit-autofill {
   /* You can add other styles as needed */
 }
 
+#main_canvas {
+  /* width: 100svw; */
+  height: auto;
+  /* object-fit: contain; */
+  /* border: solid;
+  border-width: 1px;
+  border-color: #0e0e0e; */
+}
+
 #breathing_canvas {
   position: fixed;
   border-radius: 50%;

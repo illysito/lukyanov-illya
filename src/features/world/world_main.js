@@ -23,9 +23,9 @@ function world_main() {
 
   // CONST
   const CONTAINER = document.querySelector('#scene-container')
-  const CONTAINER_2 = document.querySelector('#scene-container-2')
+  // const CONTAINER_2 = document.querySelector('#scene-container-2')
   const WORLD = new World(CONTAINER, false, true, flagArray)
-  const WORLD_2 = new World(CONTAINER_2, true, false, flagArray)
+  // const WORLD_2 = new World(CONTAINER_2, true, false, flagArray)
 
   // VARIABLES
   let mouseX = 0
@@ -36,7 +36,7 @@ function world_main() {
 
   // INIT
   WORLD.start()
-  WORLD_2.start()
+  // WORLD_2.start()
 
   // EVENT LISTENERS
   window.addEventListener('mousemove', (event) => {

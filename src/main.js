@@ -21,6 +21,7 @@ import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
 import breaths from './features/shaders/breaths'
+import fbm from './features/shaders/fbm'
 import kaleidoscope from './features/shaders/kaleidoscope'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
@@ -113,6 +114,7 @@ function runHomeFunctions() {
     world_main()
   }
   hero()
+  fbm()
   // if (circle) {
   //   mouse(circle)
   // } else {
