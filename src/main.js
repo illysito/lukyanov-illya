@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// IMPORTS
+// IMPORTS!
 import about from './features/about'
 import dark_mode from './features/dark_mode'
 // import ball from './features/experiments/gradient_ball'
