@@ -166,4 +166,3 @@ function runHomeFunctions() {
 set()
 // runExpFunctions()
 if (!document.body.classList.contains('body__shaders')) runHomeFunctions()
-// runShaders()
