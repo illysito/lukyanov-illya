@@ -2,7 +2,10 @@ import GlslCanvas from 'glslCanvas'
 
 import frag from './fbm_frag_shader'
 
-function fbm() {
+function fbm(darkModeShader) {
+  if (darkModeShader) {
+    console.log(darkModeShader)
+  }
   const canvas = document.querySelector('#main_canvas')
   const gl = canvas.getContext('webgl')
   if (!gl) {
@@ -33,7 +36,19 @@ function fbm() {
   const fragment_shader = frag
   sandbox.load(fragment_shader)
   sandbox.setUniform('u_resolution', [canvas.width, canvas.height])
+  if (darkModeShader) {
+    sandbox.setUniform('darkMode', darkModeShader.current)
+  }
+  // andbox.setUniform('u_resolution', [canvas.width, canvas.height])
   //prettier-ignore
+  function updateUniforms() {
+    if (darkModeShader) {
+      console.log('updating darkMode Uniform:', darkModeShader.current)
+      sandbox.setUniform('darkMode', darkModeShader.current)
+    }
+  }
+
+  return updateUniforms
 }
 
 export default fbm

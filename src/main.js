@@ -20,9 +20,9 @@ import preloader_count from './features/preloader_count'
 import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
 import set from './features/set'
-import breaths from './features/shaders/breaths'
-import fbm from './features/shaders/fbm'
-import kaleidoscope from './features/shaders/kaleidoscope'
+// import breaths from './features/shaders/breaths'
+// import fbm from './features/shaders/fbm'
+// import kaleidoscope from './features/shaders/kaleidoscope'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
 import world_main from './features/world/world_main'
@@ -48,6 +48,9 @@ function isMobileOrBelow() {
 }
 
 let isDarkMode = true
+let darkShader = 0.0
+const darkModeShader = { current: darkShader }
+
 let isMobileVar = isMobile()
 let isMobileOrBelowVar = isMobileOrBelow()
 
@@ -114,7 +117,7 @@ function runHomeFunctions() {
     world_main()
   }
   hero()
-  fbm()
+  // fbm()
   // if (circle) {
   //   mouse(circle)
   // } else {
@@ -128,7 +131,7 @@ function runHomeFunctions() {
   }
   requestAnimationFrame(variableType)
   // Funcion que hace el MOUSETRAIL de estrellitas
-  dark_mode(isDarkMode)
+  dark_mode(isDarkMode, darkModeShader)
   menu()
   about()
   main_scroll(isMobileVar)
@@ -142,10 +145,10 @@ function runHomeFunctions() {
   nature()
 }
 
-function runShaders() {
-  breaths()
-  kaleidoscope()
-}
+// function runShaders() {
+//   breaths()
+//   kaleidoscope()
+// }
 
 // ---------- EXPERIMENTS ---------- Estas funciones son para lo de Padmi //
 
@@ -163,4 +166,4 @@ function runShaders() {
 set()
 // runExpFunctions()
 if (!document.body.classList.contains('body__shaders')) runHomeFunctions()
-runShaders()
+// runShaders()

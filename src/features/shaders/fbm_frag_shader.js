@@ -8,6 +8,7 @@ precision highp float;
 uniform float u_time;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
+uniform float darkMode;
 
 varying vec2 v_texcoord;
 
@@ -65,8 +66,8 @@ void main(void)
     float dist = distance(mouse, uv);
     float strength = smoothstep(1.0, 0.0, dist);
     
-    vec4 blue = vec4(1.0,0.9,0.85,1.0);
-    vec4 violet = vec4(1.0,0.98,0.96,1.0);
+    vec4 foreground = mix(vec4(0.99,0.9,0.85,1.0), vec4(0.13,0.15,0.15,1.0), darkMode);
+    vec4 background = mix(vec4(1.0,0.98,0.96,1.0), vec4(0.054901960784313725, 0.054901960784313725, 0.054901960784313725, 1.0), darkMode);
     
     // inicializazo mixFactor
     float mixFactor = 0.0;
@@ -101,7 +102,7 @@ void main(void)
     // Apply edge fade to mixFactor
     mixFactor *= edgeFade;
     
-    vec4 color = mix(violet, blue, mixFactor);
+    vec4 color = mix(background, foreground, mixFactor);
     
     gl_FragColor = color;
 

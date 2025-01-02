@@ -1,6 +1,10 @@
 import { gsap } from 'gsap'
 
-function dark_mode(isDarkMode) {
+import fbm from './shaders/fbm.js'
+
+function dark_mode(isDarkMode, darkModeShader) {
+  // para el shader
+  const updateUniforms = fbm(darkModeShader)
   // const hero_wrapper = document.querySelector('.hero-wrap')
   const white = '#fffbf6'
   const black = '#0e0e0e'
@@ -83,6 +87,16 @@ function dark_mode(isDarkMode) {
           backgroundColor: black,
           duration: dur,
           ease: ez,
+        })
+        // SHADER:
+        gsap.to(darkModeShader, {
+          current: 1.0,
+          duration: dur,
+          ease: ez,
+          onUpdate: () => {
+            // Update the shader's uniform on each frame
+            updateUniforms(darkModeShader)
+          },
         })
         gsap.to(footer, {
           backgroundColor: white,
@@ -216,6 +230,16 @@ function dark_mode(isDarkMode) {
           backgroundColor: white,
           duration: dur,
           ease: ez,
+        })
+        // SHADER:
+        gsap.to(darkModeShader, {
+          current: 0.0,
+          duration: dur,
+          ease: ez,
+          onUpdate: () => {
+            // Update the shader's uniform on each frame
+            updateUniforms(darkModeShader)
+          },
         })
         gsap.to(footer, {
           backgroundColor: black,
