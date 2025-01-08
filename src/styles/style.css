@@ -30,8 +30,8 @@ select:-webkit-autofill {
 }
 
 #main_canvas {
-  /* width: 100svw; */
-  height: auto;
+  width: 100svw;
+  height: 300svh;
   /* object-fit: contain; */
   /* border: solid;
   border-width: 1px;

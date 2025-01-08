@@ -78,7 +78,7 @@ void main(void)
     
     // mixFactor + FBM
     mixFactor = fbm(uv + move);
-    mixFactor *= 24.0;
+    mixFactor *= 8.0;
     mixFactor += mix(-0.01, 0.015, rand(uv));
     mixFactor += 0.1 * u_time;
     mixFactor = fract(mixFactor);
