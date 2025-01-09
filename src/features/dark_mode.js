@@ -5,6 +5,7 @@ import fbm from './shaders/fbm.js'
 function dark_mode(isDarkMode, darkModeShader) {
   // para el shader
   const updateUniforms = fbm(darkModeShader)
+
   // const hero_wrapper = document.querySelector('.hero-wrap')
   const white = '#fffbf6'
   const black = '#0e0e0e'
@@ -13,6 +14,7 @@ function dark_mode(isDarkMode, darkModeShader) {
   const language = document.querySelectorAll('.language')
   const scroll_p = document.querySelector('.scroll-p')
   const about_h = document.querySelectorAll('.about-h')
+  const service_h = document.querySelectorAll('.services-h')
   const about_h_lil = document.querySelectorAll('.about-h-little')
   const about_p = document.querySelectorAll('.about-p')
   const proj_heading = document.querySelectorAll('.project__heading')
@@ -55,6 +57,7 @@ function dark_mode(isDarkMode, darkModeShader) {
   const ez = 'power2.inOut'
   const textArray = [
     about_h,
+    service_h,
     about_h_lil,
     about_p,
     proj_heading,

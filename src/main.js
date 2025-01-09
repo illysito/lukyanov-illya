@@ -13,7 +13,7 @@ import main_scroll from './features/main_scroll'
 import menu from './features/menu'
 import mousetrail from './features/mousetrail'
 // import mouse from './features/unused/mouse'
-import nature from './features/nature'
+// import nature from './features/nature'
 import preloader_animation from './features/preloader_animation'
 import preloader_count from './features/preloader_count'
 // import observe from './features/observer'
@@ -94,18 +94,25 @@ window.addEventListener('resize', () => {
 // ------------ PRELOADER ----------------- //
 function init() {
   // Check if the preloader has been shown before
-  const preloaderShown = localStorage.getItem('preloaderShown')
+  if (document.querySelector('.preloader-overlay')) {
+    const preloaderShown = localStorage.getItem('preloaderShown')
+    console.log('preloader shown: ' + preloaderShown)
 
-  if (!preloaderShown) {
-    // Show the preloader if it hasn't been shown before
-    document.querySelector('.preloader-counter-wrapper').style.display = 'flex'
-    document.querySelector('.preloader-overlay').style.display = 'flex'
-    preloader_count()
-    preloader_animation()
+    if (!preloaderShown) {
+      // Show the preloader if it hasn't been shown before
+      // prettier-ignore
+      document.querySelector('.preloader-counter-wrapper').style.display = 'flex'
+      document.querySelector('.preloader-overlay').style.display = 'flex'
+      preloader_count()
+      preloader_animation()
+    } else {
+      // Hide the preloader if it has been shown before
+      // prettier-ignore
+      document.querySelector('.preloader-counter-wrapper').style.display = 'none'
+      document.querySelector('.preloader-overlay').style.display = 'none'
+    }
   } else {
-    // Hide the preloader if it has been shown before
-    document.querySelector('.preloader-counter-wrapper').style.display = 'none'
-    document.querySelector('.preloader-overlay').style.display = 'none'
+    console.error('No preloader!')
   }
 }
 init()
@@ -142,7 +149,7 @@ function runHomeFunctions() {
   // observe()
   projects()
   // Luna y Sol bajando y subiendo de la montaña
-  nature()
+  // nature()
 }
 
 // function runShaders() {

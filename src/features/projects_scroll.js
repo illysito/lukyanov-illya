@@ -6,8 +6,10 @@ gsap.registerPlugin(ScrollTrigger)
 function projects_scroll() {
   const images = document.querySelectorAll('.work-img')
   const titles = document.querySelectorAll('.project__heading')
-  const image_2 = document.querySelector('.work-img-2')
+  // const image_2 = document.querySelector('.work-img-2')
   const work_col = document.querySelectorAll('.work-col')
+  const overlay = document.querySelectorAll('.project-overlay')
+  // const arrow = document.querySelectorAll('.arrow')
   const randomFactor = 1
   let delay
 
@@ -66,7 +68,10 @@ function projects_scroll() {
   })
 
   function hover(event) {
-    let img = event.currentTarget
+    let overlay = event.currentTarget
+    let img = overlay.previousElementSibling
+    let arrow = overlay.firstElementChild
+    let coming_soon = overlay.lastElementChild
     // const i = [images].indexOf(img)
     // if (i === 2) {
     //   gsap.to(img, {
@@ -80,8 +85,26 @@ function projects_scroll() {
     //     ease: 'power2.out',
     //   })
     // } else {
+    gsap.to(overlay, {
+      opacity: 1,
+      borderRadius: 20,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
     gsap.to(img, {
-      opacity: 0.8,
+      borderRadius: 20,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    gsap.to(arrow, {
+      opacity: 1,
+      yPercent: -40,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    gsap.to(coming_soon, {
+      opacity: 1,
+      yPercent: 40,
       duration: 0.5,
       ease: 'power2.out',
     })
@@ -89,33 +112,40 @@ function projects_scroll() {
   }
 
   function hoverOut(event) {
-    let img = event.currentTarget
-    const i = [images].indexOf(img)
-    if (i === 1) {
-      gsap.to(img, {
-        opacity: 0.9,
-        duration: 1,
-        ease: 'power2.out',
-      })
-      gsap.to(image_2, {
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-      })
-    } else {
-      gsap.to(img, {
-        opacity: 1,
-        duration: 0.5,
-        ease: 'power2.out',
-      })
-    }
+    let overlay = event.currentTarget
+    let arrow = overlay.firstElementChild
+    let img = overlay.previousElementSibling
+    let coming_soon = overlay.lastElementChild
+    gsap.to(overlay, {
+      opacity: 0,
+      borderRadius: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    gsap.to(img, {
+      borderRadius: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    gsap.to(arrow, {
+      opacity: 0,
+      yPercent: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    gsap.to(coming_soon, {
+      opacity: 0,
+      yPercent: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
   }
 
-  images.forEach((img) => {
-    img.addEventListener('mouseover', hover)
+  overlay.forEach((ovly) => {
+    ovly.addEventListener('mouseover', hover)
   })
-  images.forEach((img) => {
-    img.addEventListener('mouseleave', hoverOut)
+  overlay.forEach((ovly) => {
+    ovly.addEventListener('mouseleave', hoverOut)
   })
 }
 

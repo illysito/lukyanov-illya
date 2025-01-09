@@ -3,6 +3,9 @@ import GlslCanvas from 'glslCanvas'
 import frag from './fbm_frag_shader'
 
 function fbm(darkModeShader) {
+  if (!document.querySelector('#main_canvas')) {
+    return
+  }
   if (darkModeShader) {
     console.log(darkModeShader)
   }

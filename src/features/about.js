@@ -4,6 +4,7 @@ import SplitType from 'split-type'
 function about() {
   // Cojo todos los headers
   const headings = document.querySelectorAll('.about-h')
+  const services = document.querySelectorAll('.services-h')
   const headings_little = document.querySelectorAll('.about-h-little')
   const paragraphs = document.querySelectorAll('.about-p')
 
@@ -43,6 +44,19 @@ function about() {
       ease: 'power2.Out',
       scrollTrigger: {
         trigger: heading,
+        start: 'top 98%',
+        end: 'top 80%',
+        markers: false,
+      },
+    })
+  })
+  services.forEach((service) => {
+    gsap.to(service, {
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.Out',
+      scrollTrigger: {
+        trigger: service,
         start: 'top 98%',
         end: 'top 80%',
         markers: false,

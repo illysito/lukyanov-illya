@@ -1,6 +1,7 @@
 import { gsap } from 'gsap'
 
 function preloader_animation() {
+  const preloader_overlay = document.querySelector('.preloader-overlay')
   // function isMobile() {
   //   return window.innerWidth <= 478 // or use any threshold you consider as mobile
   // }
@@ -17,7 +18,7 @@ function preloader_animation() {
     delay: 4,
     duration: 1,
   })
-  gsap.to('.preloader-overlay', {
+  gsap.to(preloader_overlay, {
     delay: 4,
     opacity: 0,
     stagger: {
