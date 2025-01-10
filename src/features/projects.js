@@ -2,8 +2,23 @@ import { gsap } from 'gsap'
 
 function projects() {
   const titles = document.querySelectorAll('.project__title')
+  const main_project_frame = document.querySelector('.work-img-still-2')
   let currentIndex = 0
   console.log(currentIndex)
+
+  const tl = gsap.timeline({
+    repeat: -1,
+  })
+
+  tl.to(main_project_frame, {
+    opacity: 0,
+    duration: 0,
+    delay: 0.7,
+  }).to(main_project_frame, {
+    opacity: 1,
+    duration: 0,
+    delay: 0.7,
+  })
 
   // EFECTO on HOVER sobre los HEADINGS
   function handleTitleHover(event) {
