@@ -1,10 +1,11 @@
 import { gsap } from 'gsap'
 
-import fbm from './shaders/fbm.js'
+// import fbm from './shaders/fbm.js'
 
 function dark_mode(isDarkMode, darkModeShader) {
   // para el shader
-  const updateUniforms = fbm(darkModeShader)
+  console.log(darkModeShader)
+  // const updateUniforms = fbm(darkModeShader)
 
   // const hero_wrapper = document.querySelector('.hero-wrap')
   const white = '#fffbf6'
@@ -36,8 +37,8 @@ function dark_mode(isDarkMode, darkModeShader) {
   const field_stars_white = document.querySelectorAll('.field-star-white')
   const success = document.querySelector('.success-message')
   // nature
-  const mountains_black = document.querySelector('.mountains-black')
-  const mountains_white = document.querySelector('.mountains-white')
+  // const mountains_black = document.querySelector('.mountains-black')
+  // const mountains_white = document.querySelector('.mountains-white')
   const sun = document.querySelector('.side__sun')
   // footer
   const footer = document.querySelector('.footer')
@@ -47,8 +48,8 @@ function dark_mode(isDarkMode, darkModeShader) {
   const made_text = document.querySelectorAll('.made-text')
 
   const moon = document.querySelector('.moon')
-  const nature_moon_black = document.querySelector('.moon_black')
-  const nature_moon_white = document.querySelector('.moon_white')
+  // const nature_moon_black = document.querySelector('.moon_black')
+  // const nature_moon_white = document.querySelector('.moon_white')
 
   const button = document.querySelector('.darkmode-button')
   const body = document.body
@@ -92,15 +93,15 @@ function dark_mode(isDarkMode, darkModeShader) {
           ease: ez,
         })
         // SHADER:
-        gsap.to(darkModeShader, {
-          current: 1.0,
-          duration: dur,
-          ease: ez,
-          onUpdate: () => {
-            // Update the shader's uniform on each frame
-            updateUniforms(darkModeShader)
-          },
-        })
+        // gsap.to(darkModeShader, {
+        //   current: 1.0,
+        //   duration: dur,
+        //   ease: ez,
+        //   onUpdate: () => {
+        //     // Update the shader's uniform on each frame
+        //     updateUniforms(darkModeShader)
+        //   },
+        // })
         gsap.to(footer, {
           backgroundColor: white,
           duration: dur,
@@ -140,26 +141,26 @@ function dark_mode(isDarkMode, darkModeShader) {
             ease: ez,
           })
         })
-        gsap.to(mountains_black, {
-          opacity: 0,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(mountains_white, {
-          opacity: 1,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(nature_moon_black, {
-          opacity: 0,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(nature_moon_white, {
-          opacity: 1,
-          duration: 1 * dur,
-          ease: ez,
-        })
+        // gsap.to(mountains_black, {
+        //   opacity: 0,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(mountains_white, {
+        //   opacity: 1,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(nature_moon_black, {
+        //   opacity: 0,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(nature_moon_white, {
+        //   opacity: 1,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
         gsap.to([tag_wrapper, sun], {
           backgroundColor: white,
           duration: dur,
@@ -235,15 +236,15 @@ function dark_mode(isDarkMode, darkModeShader) {
           ease: ez,
         })
         // SHADER:
-        gsap.to(darkModeShader, {
-          current: 0.0,
-          duration: dur,
-          ease: ez,
-          onUpdate: () => {
-            // Update the shader's uniform on each frame
-            updateUniforms(darkModeShader)
-          },
-        })
+        // gsap.to(darkModeShader, {
+        //   current: 0.0,
+        //   duration: dur,
+        //   ease: ez,
+        //   onUpdate: () => {
+        //     // Update the shader's uniform on each frame
+        //     updateUniforms(darkModeShader)
+        //   },
+        // })
         gsap.to(footer, {
           backgroundColor: black,
           duration: dur,
@@ -283,26 +284,26 @@ function dark_mode(isDarkMode, darkModeShader) {
             ease: ez,
           })
         })
-        gsap.to(mountains_black, {
-          opacity: 1,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(mountains_white, {
-          opacity: 0,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(nature_moon_black, {
-          opacity: 1,
-          duration: 1 * dur,
-          ease: ez,
-        })
-        gsap.to(nature_moon_white, {
-          opacity: 0,
-          duration: 1 * dur,
-          ease: ez,
-        })
+        // gsap.to(mountains_black, {
+        //   opacity: 1,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(mountains_white, {
+        //   opacity: 0,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(nature_moon_black, {
+        //   opacity: 1,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
+        // gsap.to(nature_moon_white, {
+        //   opacity: 0,
+        //   duration: 1 * dur,
+        //   ease: ez,
+        // })
         gsap.to([tag_wrapper, sun], {
           backgroundColor: black,
           duration: dur,
