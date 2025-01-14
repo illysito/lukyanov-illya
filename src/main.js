@@ -8,6 +8,7 @@ import dark_mode from './features/dark_mode'
 // import ball from './features/experiments/gradient_ball'
 // import line from './features/experiments/gradient_line'
 import hero from './features/hero'
+import barrrenaScroll from './features/individual pages/barrrena_scroll'
 import derivaScroll from './features/individual pages/deriva_scroll'
 import typeDance from './features/individual pages/deriva_type_dance'
 // import bento_blur from './features/bento_blur'
@@ -178,6 +179,10 @@ function runDerivaFunctions() {
   requestAnimationFrame(derivaType)
   derivaScroll()
 }
+
+function runBarrrenaFunctions() {
+  barrrenaScroll()
+}
 // function runShaders() {
 //   breaths()
 //   kaleidoscope()
@@ -200,3 +205,4 @@ set()
 // runExpFunctions()
 if (document.body.classList.contains('body__home')) runHomeFunctions()
 if (document.body.classList.contains('body__deriva')) runDerivaFunctions()
+if (document.body.classList.contains('body__barrrena')) runBarrrenaFunctions()
