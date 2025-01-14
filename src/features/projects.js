@@ -1,59 +1,54 @@
 import { gsap } from 'gsap'
 
 function projects() {
-  const titles = document.querySelectorAll('.project__title')
-  const main_project_frame = document.querySelector('.work-img-still-2')
-  let currentIndex = 0
-  console.log(currentIndex)
+  const main_project_frame = document.querySelector('.main-proj-img-pc')
+  console.log('MAIN PROJECT FRAME: ', main_project_frame)
 
-  const tl = gsap.timeline({
-    repeat: -1,
-  })
-
-  tl.to(main_project_frame, {
-    opacity: 0,
-    duration: 0,
-    delay: 0.7,
-  }).to(main_project_frame, {
-    opacity: 1,
-    duration: 0,
-    delay: 0.7,
-  })
-
-  // EFECTO on HOVER sobre los HEADINGS
-  function handleTitleHover(event) {
-    // Cojo el titulo y también su INDEX
-    let actualTitle = event.currentTarget
-    currentIndex = Array.prototype.indexOf.call(titles, actualTitle)
-    // Efecto sobre el titulo
-    gsap.to(actualTitle, {
-      fontWeight: 450,
-      x: 8,
-      color: '#ffd41d',
-      duration: 0.3,
+  function mainHover(event) {
+    let mainProj = event.currentTarget
+    let mainWrapper = mainProj.parentElement
+    console.log(mainWrapper)
+    console.log(mainProj, mainWrapper)
+    gsap.to(mainProj, {
+      scale: 1.05,
+      borderRadius: 32,
+      duration: 0.8,
+      ease: 'power2.Out',
+    })
+    gsap.to(mainWrapper, {
+      borderRadius: 32,
+      duration: 0.8,
       ease: 'power2.Out',
     })
   }
 
-  function handleTitleHoverOut(event) {
-    let actualTitle = event.currentTarget
-    gsap.to(actualTitle, {
-      fontWeight: 300,
-      x: 0,
-      color: '#fffbf6',
-      duration: 0.3,
+  function mainHoverOut(event) {
+    let mainProj = event.currentTarget
+    let mainWrapper = mainProj.parentElement
+
+    gsap.to(mainProj, {
+      scale: 1,
+      borderRadius: 4,
+      duration: 0.8,
+      ease: 'power2.Out',
+    })
+    gsap.to(mainWrapper, {
+      borderRadius: 4,
+      duration: 0.8,
       ease: 'power2.Out',
     })
   }
 
-  titles.forEach((title) => {
-    title.addEventListener('mouseover', handleTitleHover)
-    title.addEventListener('mouseleave', handleTitleHoverOut)
-  })
-  // images.forEach((image) => {
-  //   image.addEventListener('mouseover', handleImgHover)
-  //   image.addEventListener('mouseleave', handleImgHoverOut)
+  // //prettier-ignore
+  // main_project_frame.forEach((frame) => {
+  //   frame.addEventListener('mouseover', () => console.log('hover in'))
   // })
+  // //prettier-ignore
+  // main_project_frame.forEach((frame) => {
+  //   frame.addEventListener('mouseleave', () => console.log('hover out'))
+  // })
+  main_project_frame.addEventListener('mouseover', mainHover)
+  main_project_frame.addEventListener('mouseleave', mainHoverOut)
 }
 
 export default projects

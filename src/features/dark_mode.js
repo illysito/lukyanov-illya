@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 
 function dark_mode(isDarkMode, darkModeShader) {
   // para el shader
-  console.log(darkModeShader)
+  console.log('darkModeShader OBJECT MANDATORY LOG: ' + darkModeShader)
   // const updateUniforms = fbm(darkModeShader)
 
   // const hero_wrapper = document.querySelector('.hero-wrap')

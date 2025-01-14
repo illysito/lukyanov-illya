@@ -35,14 +35,14 @@ class World {
     } else {
       console.log('thres no flag array working here or what?')
     }
-    console.log('isMobile: ' + this.isMobile)
-    console.log('isLandscape: ' + this.isLandscape)
-    console.log('isTablet: ' + this.isTablet)
-    console.log('isPC: ' + this.isPC)
+    // console.log('isMobile: ' + this.isMobile)
+    // console.log('isLandscape: ' + this.isLandscape)
+    // console.log('isTablet: ' + this.isTablet)
+    // console.log('isPC: ' + this.isPC)
 
     // SETUP FUNCTIONS
     this.setTextArray(this.flagArray)
-    console.log('widthDivider: ' + this.xPosition)
+    // console.log('widthDivider: ' + this.xPosition)
 
     // IS IT TORUS OR TEXT?
     this.torusFlag = torus
@@ -88,7 +88,7 @@ class World {
 
     // RESIZER
     const resizer = new Resizer(container, this.camera, this.renderer)
-    console.log(resizer)
+    console.log('Resizer MANDATORY LOG: ' + resizer)
   }
 
   setTextArray() {
@@ -135,7 +135,7 @@ class World {
     // async function createText(text, x, y, z, index)
     if (this.xPosition) {
       // Create the text and add it to the scene
-      console.log('im here!')
+      // console.log('im here!')
       this.i = await createText(
         'I',
         -window.innerWidth / this.xPosition[0],
@@ -174,8 +174,8 @@ class World {
       )
       this.scene.add(this.i, this.l1, this.l2, this.y) // Add the text to the scene
       this.loop.updatables.push(this.i, this.l1, this.l2, this.y)
-      console.log(this.i.visible) // Should be true
-      console.log(this.i.scale) // Should not be zero
+      // console.log(this.i.visible) // Should be true
+      // console.log(this.i.scale) // Should not be zero
     }
   }
   // 2. Render the scene

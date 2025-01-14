@@ -55,7 +55,7 @@ async function createText(text, x, y, z, size, depth, index) {
   })
 
   let grainMaterial
-  console.log('index:' + index)
+  // console.log('index:' + index)
   if (index === 0) {
     grainMaterial = new ShaderMaterial({
       uniforms: {

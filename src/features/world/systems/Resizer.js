@@ -19,7 +19,7 @@ class Resizer {
     })
   }
   onResize() {
-    console.log('resized!')
+    // console.log('resized!')
   }
 }
 

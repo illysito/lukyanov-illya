@@ -159,11 +159,12 @@ function runHomeFunctions() {
   about()
   main_scroll(isMobileVar)
   if (!isMobileOrBelowVar) {
+    console.log('SIZE ABOVE MOBILE')
+    projects()
     projects_scroll()
   }
   mousetrail(trail_wrapper, trail_array)
   // observe()
-  projects()
   // Luna y Sol bajando y subiendo de la montaña
   // nature()
 }

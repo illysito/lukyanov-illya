@@ -19,7 +19,7 @@ function world_main() {
     return window.innerWidth >= 991
   }
   flagArray = [isMobile(), isLandscape(), isTablet(), isPC()]
-  console.log('flagArray: ' + flagArray)
+  // console.log('flagArray: ' + flagArray)
 
   // CONST
   const CONTAINER = document.querySelector('#scene-container')
