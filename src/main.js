@@ -1,5 +1,6 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import SplitType from 'split-type'
 
 // IMPORTS!
 import about from './features/about'
@@ -7,6 +8,8 @@ import dark_mode from './features/dark_mode'
 // import ball from './features/experiments/gradient_ball'
 // import line from './features/experiments/gradient_line'
 import hero from './features/hero'
+import derivaScroll from './features/individual pages/deriva_scroll'
+import typeDance from './features/individual pages/deriva_type_dance'
 // import bento_blur from './features/bento_blur'
 // import bento_work from './features/bento_work'
 import main_scroll from './features/main_scroll'
@@ -38,6 +41,17 @@ const contactHeader = document.querySelectorAll('.contact__work-header')
 // const blob = document.querySelector('.gradball')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
+const deriva_var_1 = document.querySelector('.deriva-variable-heading-1')
+const deriva_var_2 = document.querySelector('.deriva-variable-heading-2')
+
+let deriva_array_1 = new SplitType(deriva_var_1, { types: 'chars' }).chars
+gsap.set(deriva_var_1, {
+  fontWeight: 63.6,
+})
+let deriva_array_2 = new SplitType(deriva_var_2, { types: 'chars' }).chars
+gsap.set(deriva_var_2, {
+  fontWeight: 63.6,
+})
 
 function isMobile() {
   return window.innerWidth < 479
@@ -120,7 +134,7 @@ init()
 
 function runHomeFunctions() {
   // Funcion que hace que la bolita siga al MOUSE
-  if (!isMobileOrBelowVar) {
+  if (!isMobileOrBelowVar && document.body.classList.contains('body__home')) {
     world_main()
   }
   hero()
@@ -131,6 +145,8 @@ function runHomeFunctions() {
   //   console.log('theres no circle')
   // }
   // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
+
+  requestAnimationFrame(hero)
   function variableType() {
     counter++
     variable_type(counter, contactHeader)
@@ -152,6 +168,15 @@ function runHomeFunctions() {
   // nature()
 }
 
+function runDerivaFunctions() {
+  function derivaType() {
+    counter++
+    typeDance(counter, deriva_array_1, deriva_array_2)
+    requestAnimationFrame(derivaType)
+  }
+  requestAnimationFrame(derivaType)
+  derivaScroll()
+}
 // function runShaders() {
 //   breaths()
 //   kaleidoscope()
@@ -172,4 +197,5 @@ function runHomeFunctions() {
 // }
 set()
 // runExpFunctions()
-if (!document.body.classList.contains('body__shaders')) runHomeFunctions()
+if (document.body.classList.contains('body__home')) runHomeFunctions()
+if (document.body.classList.contains('body__deriva')) runDerivaFunctions()
