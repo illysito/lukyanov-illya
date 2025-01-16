@@ -3,10 +3,10 @@ import { gsap } from 'gsap'
 // import fbm from './shaders/fbm.js'
 
 function dark_mode(isDarkMode, darkModeShader) {
+  // persistent
   // para el shader
   console.log('darkModeShader OBJECT MANDATORY LOG: ' + darkModeShader)
   // const updateUniforms = fbm(darkModeShader)
-
   // const hero_wrapper = document.querySelector('.hero-wrap')
   const white = '#fffbf6'
   const black = '#0e0e0e'
@@ -72,9 +72,20 @@ function dark_mode(isDarkMode, darkModeShader) {
 
   const singleTextArray = [nav_p, scroll_p]
 
-  // let isDarkMode = false
+  // // let isDarkMode = false
+  // darkModeShown = darkModeShown === 'true'
+
+  // // Apply the initial mode from localStorage
+  // if (darkModeShown) {
+  //   isDarkMode = true
+  //   darkMode()
+  // } else {
+  //   isDarkMode = false
+  //   lightMode()
+  // }
 
   function darkMode() {
+    // localStorage.setItem('darkModeShown', 'true')
     // BACKGROUNDS:
     // IMAGE SHIFTING:
     gsap.to([illy_white, logo, moon], {
@@ -219,6 +230,7 @@ function dark_mode(isDarkMode, darkModeShader) {
   }
 
   function lightMode() {
+    // localStorage.setItem('darkModeShown', 'false')
     // BACKGROUNDS:
     gsap.to([illy_black, logo_black], {
       opacity: 0,

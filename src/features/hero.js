@@ -13,6 +13,7 @@ function hero() {
       start: 'bottom bottom',
       end: 'bottom 20%',
       scrub: true,
+      // markers: true,
     },
   })
   gsap.to(scroll_p, {

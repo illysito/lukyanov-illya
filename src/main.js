@@ -23,7 +23,7 @@ import preloader_count from './features/preloader_count'
 // import observe from './features/observer'
 import projects from './features/projects'
 import projects_scroll from './features/projects_scroll'
-import set from './features/set'
+// import set from './features/set'
 // import breaths from './features/shaders/breaths'
 // import fbm from './features/shaders/fbm'
 // import kaleidoscope from './features/shaders/kaleidoscope'
@@ -44,15 +44,9 @@ const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
 const deriva_var_1 = document.querySelector('.deriva-variable-heading-1')
 const deriva_var_2 = document.querySelector('.deriva-variable-heading-2')
-
-let deriva_array_1 = new SplitType(deriva_var_1, { types: 'chars' }).chars
-gsap.set(deriva_var_1, {
-  fontWeight: 63.6,
-})
-let deriva_array_2 = new SplitType(deriva_var_2, { types: 'chars' }).chars
-gsap.set(deriva_var_2, {
-  fontWeight: 63.6,
-})
+// const darkModeShown = localStorage.getItem('darkModeShown')
+// document.body.style.backgroundColor = darkModeShown ? '#0e0e0e' : '#fffbf6'
+// console.log('darkmode: ' + darkModeShown)
 
 function isMobile() {
   return window.innerWidth < 479
@@ -135,7 +129,7 @@ init()
 
 function runHomeFunctions() {
   // Funcion que hace que la bolita siga al MOUSE
-  if (!isMobileOrBelowVar && document.body.classList.contains('body__home')) {
+  if (!isMobileOrBelowVar) {
     world_main()
   }
   hero()
@@ -147,7 +141,7 @@ function runHomeFunctions() {
   // }
   // Funcion que hace VARIABLE TYPE en WORK: tiene counter -> necesita RAF
 
-  requestAnimationFrame(hero)
+  // requestAnimationFrame(hero)
   function variableType() {
     counter++
     variable_type(counter, contactHeader)
@@ -171,6 +165,14 @@ function runHomeFunctions() {
 }
 
 function runDerivaFunctions() {
+  let deriva_array_1 = new SplitType(deriva_var_1, { types: 'chars' }).chars
+  gsap.set(deriva_var_1, {
+    fontWeight: 63.6,
+  })
+  let deriva_array_2 = new SplitType(deriva_var_2, { types: 'chars' }).chars
+  gsap.set(deriva_var_2, {
+    fontWeight: 63.6,
+  })
   function derivaType() {
     counter++
     typeDance(counter, deriva_array_1, deriva_array_2)
@@ -201,7 +203,7 @@ function runBarrrenaFunctions() {
 // runHomeFunctions()
 // } else if (document.body.classList.contains('body__experiments')) {
 // }
-set()
+// set()
 // runExpFunctions()
 if (document.body.classList.contains('body__home')) runHomeFunctions()
 if (document.body.classList.contains('body__deriva')) runDerivaFunctions()
