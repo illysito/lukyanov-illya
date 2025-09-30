@@ -29,6 +29,7 @@ import projects_scroll from './features/projects_scroll'
 // import kaleidoscope from './features/shaders/kaleidoscope'
 // import mouse from './features/unused/mouse'
 import variable_type from './features/variable_type'
+import variable_type_carlota from './features/variable_type_carlota'
 import world_main from './features/world/world_main'
 
 import './styles/style.css'
@@ -39,6 +40,7 @@ gsap.registerPlugin(ScrollTrigger)
 // const rect = document.querySelector('.rect')
 // const workHeader = document.querySelectorAll('.bento__work-header')
 const contactHeader = document.querySelectorAll('.contact__work-header')
+const carlotaHeader = document.querySelectorAll('.briefing__work-header')
 // const blob = document.querySelector('.gradball')
 const trail_wrapper = document.querySelector('.trail-wrapper')
 const trail_array = document.querySelectorAll('.trail')
@@ -101,33 +103,34 @@ window.addEventListener('resize', () => {
 })
 
 // ------------ PRELOADER ----------------- //
-function init() {
-  // Check if the preloader has been shown before
-  if (document.querySelector('.preloader-overlay')) {
-    const preloaderShown = localStorage.getItem('preloaderShown')
-    console.log('preloader shown: ' + preloaderShown)
 
-    if (!preloaderShown) {
-      // Show the preloader if it hasn't been shown before
-      // prettier-ignore
-      document.querySelector('.preloader-counter-wrapper').style.display = 'flex'
-      document.querySelector('.preloader-overlay').style.display = 'flex'
-      preloader_count()
-      preloader_animation()
-    } else {
-      // Hide the preloader if it has been shown before
-      // prettier-ignore
-      document.querySelector('.preloader-counter-wrapper').style.display = 'none'
-      document.querySelector('.preloader-overlay').style.display = 'none'
-    }
-  } else {
-    console.error('No preloader!')
-  }
-}
-init()
 // ------------ HOME FUNCTIONS ------------ //
 
 function runHomeFunctions() {
+  function init() {
+    // Check if the preloader has been shown before
+    if (document.querySelector('.preloader-overlay')) {
+      const preloaderShown = localStorage.getItem('preloaderShown')
+      console.log('preloader shown: ' + preloaderShown)
+
+      if (!preloaderShown) {
+        // Show the preloader if it hasn't been shown before
+        // prettier-ignore
+        document.querySelector('.preloader-counter-wrapper').style.display = 'flex'
+        document.querySelector('.preloader-overlay').style.display = 'flex'
+        preloader_count()
+        preloader_animation()
+      } else {
+        // Hide the preloader if it has been shown before
+        // prettier-ignore
+        document.querySelector('.preloader-counter-wrapper').style.display = 'none'
+        document.querySelector('.preloader-overlay').style.display = 'none'
+      }
+    } else {
+      console.error('No preloader!')
+    }
+  }
+  init()
   // Funcion que hace que la bolita siga al MOUSE
   if (!isMobileOrBelowVar) {
     world_main()
@@ -185,6 +188,15 @@ function runDerivaFunctions() {
 function runBarrrenaFunctions() {
   barrrenaScroll()
 }
+
+function runBriefingFunctions() {
+  function variableType() {
+    counter++
+    variable_type_carlota(counter, carlotaHeader)
+    requestAnimationFrame(variableType)
+  }
+  requestAnimationFrame(variableType)
+}
 // function runShaders() {
 //   breaths()
 //   kaleidoscope()
@@ -208,3 +220,4 @@ function runBarrrenaFunctions() {
 if (document.body.classList.contains('body__home')) runHomeFunctions()
 if (document.body.classList.contains('body__deriva')) runDerivaFunctions()
 if (document.body.classList.contains('body__barrrena')) runBarrrenaFunctions()
+if (document.body.classList.contains('body__briefing')) runBriefingFunctions()
